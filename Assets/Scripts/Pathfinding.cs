@@ -6,7 +6,6 @@ using System;
 
 public class Pathfinding : MonoBehaviour
 {
-    //public Transform seeker, target;
 
     PathRequestManager requestManager;
     Grid grid;
@@ -43,6 +42,7 @@ public class Pathfinding : MonoBehaviour
             while (openSet.Count > 0)
             {
                 Node currentNode = openSet.RemoveFirst();
+
                 closedSet.Add(currentNode);
 
                 if (currentNode == targetNode)

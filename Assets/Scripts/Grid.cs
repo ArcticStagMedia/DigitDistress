@@ -4,8 +4,6 @@ using System.Collections.Generic;
 
 public class Grid : MonoBehaviour {
 
-
-    //Declaration of variables
     public bool DisplayGridGizmos;
     public Transform player;
     public LayerMask unwalkableMask;
@@ -35,8 +33,6 @@ public class Grid : MonoBehaviour {
         CreateGrid();
     }
 
-
-    //Gets the max size of the grid
     public int MaxSize
     {
         get
@@ -45,8 +41,6 @@ public class Grid : MonoBehaviour {
         }
     }
 
-
-    //Creates the grid for the AI to path find
     void CreateGrid()
     {
         grid = new Node[gridSizeX, gridSizeY];
@@ -57,10 +51,11 @@ public class Grid : MonoBehaviour {
             for (int y = 0;y<gridSizeY;y++)
             {
                 Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * nodeDiameter + nodeRadius) + Vector3.forward * (y * nodeDiameter + nodeRadius);
-                bool walkable = !(Physics.CheckSphere(worldPoint,nodeRadius+.5f, unwalkableMask));
+                bool walkable = !(Physics.CheckSphere(worldPoint, nodeRadius + .5f, unwalkableMask));
 
                 int movementPenalty = 0;
 
+                // raycast
                 if (walkable)
                 {
                     Ray ray = new Ray(worldPoint + Vector3.up * 50, Vector3.down);
@@ -77,7 +72,6 @@ public class Grid : MonoBehaviour {
         }
     }
 
-    //Gets all the neighbours of the nodes
     public List<Node> GetNeighbours(Node node)
     {
         List<Node> neighbours = new List<Node>();
@@ -102,7 +96,7 @@ public class Grid : MonoBehaviour {
     }
 
     
-    //Gets a node from a point in the world
+
     public Node NodeFromWorldPoint(Vector3 worldPosition)
     {
         float percentX = (worldPosition.x + gridWorldSize.x / 2) / gridWorldSize.x;
@@ -117,12 +111,11 @@ public class Grid : MonoBehaviour {
     }
 
     public List<Node> path;
-    //Allows the drawing of the grid in the debug
     void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, 1, gridWorldSize.y));
 
-        if (grid != null && DisplayGridGizmos)
+              if (grid != null && DisplayGridGizmos)
             {
                 foreach (Node n in grid)
                 {
@@ -132,13 +125,12 @@ public class Grid : MonoBehaviour {
                         if (path.Contains(n))
                             Gizmos.color = Color.black;
                     }
-                    Gizmos.DrawWireCube(n.worldPosition, Vector3.one * (nodeDiameter - .1f));
+                    Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter - .1f));
                 }
             }
-        //}
     }
 
-    //Terrain type class to allow the AI's to decide on the best terrain to traverse on
+
     [System.Serializable]
     public class TerrainType
     {
