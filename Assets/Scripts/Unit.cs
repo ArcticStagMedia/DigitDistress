@@ -3,14 +3,19 @@ using System.Collections;
 
 public class Unit : MonoBehaviour {
 
-    public Transform target;
+    public Transform[] target;
+    public int selectedTarget = 0;
     public float speed = 50;
     Vector3[] path;
     int targetIndex;
 
-    void Start()
+    void Update()
     {
-        PathRequestManager.RequestPath(transform.position, target.position, OnPathFound);
+        if (Input.GetButtonDown("Jump"))
+        {
+            SelectTarget();
+            PathRequestManager.RequestPath(transform.position, target[selectedTarget].position, OnPathFound);
+        }
     }
 
     public void OnPathFound(Vector3[] newPath, bool pathSuccessful)
@@ -20,6 +25,35 @@ public class Unit : MonoBehaviour {
             path = newPath;
             StopCoroutine("FollowPath");
             StartCoroutine("FollowPath");
+        }
+    }
+
+    public void SelectTarget()
+    {
+        Vector3 distance;
+        if ( selectedTarget > target.Length)
+        {
+            selectedTarget = 0;
+            distance = target[selectedTarget].position - transform.position;
+        }
+        else
+        {
+            distance = target[selectedTarget].position - transform.position;
+        }
+
+        if (distance.magnitude < 1 && selectedTarget < target.Length)
+        {
+            selectedTarget++;
+            if (selectedTarget > target.Length)
+            {
+                selectedTarget = 0;
+            }
+
+        }
+        else
+        {
+
+            return;
         }
     }
 
