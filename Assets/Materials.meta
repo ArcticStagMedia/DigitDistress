@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: 669a05bc6b32b4a44bb00eb270096953
+<<<<<<< HEAD:Assets/Prefabs.meta
+guid: 35b9e36c7b49df94dbe70f9f3ecfc7f8
+=======
+guid: ccb02174af0930249b76decd4cd4d372
+>>>>>>> Prototype_Clipboard:Assets/Materials.meta
 folderAsset: yes
 DefaultImporter:
   userData: 
