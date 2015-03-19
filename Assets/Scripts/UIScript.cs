@@ -26,7 +26,6 @@ public class UIScript : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-
 	}
 
     public void MovementSwitch(bool inUI)
