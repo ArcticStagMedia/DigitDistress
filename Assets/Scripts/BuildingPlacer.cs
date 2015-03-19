@@ -8,11 +8,19 @@ public class BuildingPlacer : MonoBehaviour {
     public Text mainCameraCanvas;
     public GameObject gameCanvas;
     public Camera mainCamera;
+    public GameObject player;
+    private MouseLook mL;
+    private MouseLook mLTwo;
+    private CharacterMotor cM;
+    private bool inUI = false;
     private bool ableToAccessUI = false;
     
     // Use this for initialization
-	void Start () {
-
+	void Start () 
+    {
+        mL = player.GetComponent<MouseLook>();
+        mLTwo = mainCamera.GetComponent<MouseLook>();
+        cM = player.GetComponent<CharacterMotor>();
 	}
 	
 	// Update is called once per frame
@@ -22,7 +30,21 @@ public class BuildingPlacer : MonoBehaviour {
         {
                 gameCanvas.SetActive(true);
                 mainCameraCanvas.text = null;
+                inUI = true;
         }
+
+        if (inUI)
+        {
+            mL.enabled = false;
+            mLTwo.enabled = false;
+            cM.enabled = false;
+        }
+        else
+	    {
+            mL.enabled = true;
+            mLTwo.enabled = true;
+            cM.enabled = true;
+         }
     }
 
     void OnTriggerEnter(Collider other)
