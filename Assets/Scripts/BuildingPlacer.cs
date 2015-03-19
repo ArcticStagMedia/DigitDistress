@@ -5,22 +5,30 @@ using System.Collections;
 public class BuildingPlacer : MonoBehaviour {
 
     private string txtClickU = "Click \"U\" to view Building Interface";
-    public Text mainCameraCanvas;
+   
     public GameObject gameCanvas;
     public Camera mainCamera;
     public GameObject player;
     private MouseLook mL;
     private MouseLook mLTwo;
     private CharacterMotor cM;
+    private Text mainCameraCanvas;
     private bool inUI = false;
     private bool ableToAccessUI = false;
+    private UIScript Ui;
+    private Quaternion myLocation;
     
     // Use this for initialization
 	void Start () 
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+        mainCamera = Camera.main;
+        mainCameraCanvas = mainCamera.GetComponentInChildren<Text>();
         mL = player.GetComponent<MouseLook>();
         mLTwo = mainCamera.GetComponent<MouseLook>();
         cM = player.GetComponent<CharacterMotor>();
+        Ui = player.GetComponentInChildren<UIScript>();
+        myLocation = this.transform.rotation;
 	}
 	
 	// Update is called once per frame
@@ -30,21 +38,10 @@ public class BuildingPlacer : MonoBehaviour {
         {
                 gameCanvas.SetActive(true);
                 mainCameraCanvas.text = null;
-                inUI = true;
+                Ui.TurnOffMovement(true);
+                Ui.SetLookDirection(myLocation);
         }
 
-        if (inUI)
-        {
-            mL.enabled = false;
-            mLTwo.enabled = false;
-            cM.enabled = false;
-        }
-        else
-	    {
-            mL.enabled = true;
-            mLTwo.enabled = true;
-            cM.enabled = true;
-         }
     }
 
     void OnTriggerEnter(Collider other)
