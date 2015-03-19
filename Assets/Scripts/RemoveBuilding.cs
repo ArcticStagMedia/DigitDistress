@@ -1,21 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class RemoveBuilding : MonoBehaviour {
+public class RemoveBuilding : MonoBehaviour
+{
 
     private GameObject currentBuilding;
     public GameObject buildingPlaceholder;
 
     // Use this for initialization
-	void Start () 
+    void Start()
     {
         currentBuilding = transform.Find("B_CoffeeShop").gameObject;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        
-	}
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 
     public void RemoveTheBuilding()
     {
