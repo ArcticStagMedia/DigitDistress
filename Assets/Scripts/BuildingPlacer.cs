@@ -38,7 +38,7 @@ public class BuildingPlacer : MonoBehaviour {
         {
                 gameCanvas.SetActive(true);
                 mainCameraCanvas.text = null;
-                Ui.TurnOffMovement(true);
+                Ui.MovementSwitch(true);
                 Ui.SetLookDirection(myLocation);
         }
 

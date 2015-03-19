@@ -29,7 +29,7 @@ public class UIScript : MonoBehaviour
 
 	}
 
-    public void TurnOffMovement(bool inUI)
+    public void MovementSwitch(bool inUI)
     {
             mL.enabled = !inUI;
             mLTwo.enabled = !inUI;
