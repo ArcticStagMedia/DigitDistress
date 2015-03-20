@@ -1,0 +1,47 @@
+Initialize engine version: 4.6.3f1 (4753d8b6ef2b)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: AMD Radeon HD 7800 Series (ID=0x6818)
+    Vendor:   ATI
+    VRAM:     2027 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: E:\Documents\Unity Projects\DigitDistress\Builds\BuildOne - PrototypeWeekSix - 20.03.2015_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading E:\Documents\Unity Projects\DigitDistress\Builds\BuildOne - PrototypeWeekSix - 20.03.2015_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: E:\Documents\Unity Projects\DigitDistress\Builds\BuildOne - PrototypeWeekSix - 20.03.2015_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading E:\Documents\Unity Projects\DigitDistress\Builds\BuildOne - PrototypeWeekSix - 20.03.2015_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: E:\Documents\Unity Projects\DigitDistress\Builds\BuildOne - PrototypeWeekSix - 20.03.2015_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading E:\Documents\Unity Projects\DigitDistress\Builds\BuildOne - PrototypeWeekSix - 20.03.2015_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: E:\Documents\Unity Projects\DigitDistress\Builds\BuildOne - PrototypeWeekSix - 20.03.2015_Data\Managed\Assembly-UnityScript-firstpass.dll (this message is harmless)
+Loading E:\Documents\Unity Projects\DigitDistress\Builds\BuildOne - PrototypeWeekSix - 20.03.2015_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
+Platform assembly: E:\Documents\Unity Projects\DigitDistress\Builds\BuildOne - PrototypeWeekSix - 20.03.2015_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading E:\Documents\Unity Projects\DigitDistress\Builds\BuildOne - PrototypeWeekSix - 20.03.2015_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+Platform assembly: E:\Documents\Unity Projects\DigitDistress\Builds\BuildOne - PrototypeWeekSix - 20.03.2015_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading E:\Documents\Unity Projects\DigitDistress\Builds\BuildOne - PrototypeWeekSix - 20.03.2015_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+- Completed reload, in  0.071 seconds
+desktop: 1920x1080 60Hz; virtual: 3840x1080 at -1920,0
+<RI> Initializing input.
+<RI> Input initialized.
+Platform assembly: E:\Documents\Unity Projects\DigitDistress\Builds\BuildOne - PrototypeWeekSix - 20.03.2015_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: E:\Documents\Unity Projects\DigitDistress\Builds\BuildOne - PrototypeWeekSix - 20.03.2015_Data\Managed\System.dll (this message is harmless)
+WARNING: Shader Unsupported: 'Toon/Basic Outline' - Pass 'OUTLINE' shader state not supported
+WARNING: Shader Unsupported: 'Reflective/VertexLit' - Pass 'BASE' shader state not supported
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1771)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1771)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1771)
+
+UnloadTime: 4.289022 ms
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 18395.
+Total: 3.520489 ms (FindLiveObjects: 0.766088 ms CreateObjectMapping: 0.099733 ms MarkObjects: 1.901289 ms  DeleteObjects: 0.012711 ms)
+
+Platform assembly: E:\Documents\Unity Projects\DigitDistress\Builds\BuildOne - PrototypeWeekSix - 20.03.2015_Data\Managed\Boo.Lang.dll (this message is harmless)
