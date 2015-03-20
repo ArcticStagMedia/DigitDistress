@@ -7,6 +7,8 @@ public class ClipboardScript : MonoBehaviour
 
 	public Vector3 UpPos;
 	public Vector3 DownPos;
+    public Vector3 upSize;
+    public Vector3 downSize;
 	public Quaternion DownRotation;
 	public Quaternion UpRotation;
 
@@ -38,7 +40,6 @@ public class ClipboardScript : MonoBehaviour
         cM = playerbody.GetComponent<CharacterMotor>();
 		DownPos = transform.localPosition;
 		DownRotation = transform.localRotation;
-		UpPos = new Vector3 (-0.119f, 1.3f, 1.5f);
 		UpRotation = Quaternion.Euler (90, -180, 0);
 		CameraForClip = Quaternion.Euler (0, 0, 0);
 
@@ -94,6 +95,7 @@ public class ClipboardScript : MonoBehaviour
 
 
 				transform.localPosition = Vector3.Lerp (DownPos, UpPos, PercentageComplete);
+                transform.localScale = Vector3.Lerp(downSize, upSize, PercentageComplete);
 				transform.localRotation = Quaternion.Lerp(DownRotation,UpRotation, PercentageComplete);
 				TheCamera.transform.localRotation = Quaternion.Lerp(CameraStart,CameraForClip,PercentageComplete);
 
@@ -113,6 +115,7 @@ public class ClipboardScript : MonoBehaviour
 				float PercentageComplete = TimeSinceWeStartedLerping / TimeTakenDuringLerp;
 					
 				transform.localPosition = Vector3.Lerp (UpPos,DownPos, PercentageComplete);
+                transform.localScale = Vector3.Lerp(upSize, downSize, PercentageComplete);
 				transform.localRotation = Quaternion.Lerp(UpRotation,DownRotation, PercentageComplete);
 				TheCamera.transform.localRotation = Quaternion.Lerp(CameraForClip,CameraStart,PercentageComplete);
 
