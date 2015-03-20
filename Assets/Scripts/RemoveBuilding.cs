@@ -4,24 +4,27 @@ using System.Collections;
 public class RemoveBuilding : MonoBehaviour
 {
 
-    private GameObject currentBuilding;
+    private int currentBuilding;
+    private BuildingManager bM;
+    private PlaceBuilding pB;
     public GameObject buildingPlaceholder;
 
     // Use this for initialization
     void Start()
     {
-        currentBuilding = transform.Find("B_CoffeeShop").gameObject;
+        bM = GetComponent<BuildingManager>();
+        pB = GetComponent<PlaceBuilding>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        currentBuilding = bM.CurrentActiveBuilding;
     }
 
     public void RemoveTheBuilding()
     {
-        currentBuilding.SetActive(false);
-        buildingPlaceholder.SetActive(true);
+        pB.BuildBuilding(bM.DefaultBuilding);
+        pB.DeactivateBuilding(currentBuilding);
     }
 }

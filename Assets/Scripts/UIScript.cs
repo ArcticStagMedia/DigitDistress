@@ -10,14 +10,12 @@ public class UIScript : MonoBehaviour
     private MouseLook mL;
     private MouseLook mLTwo;
     private CharacterMotor cM;
-    private Text mainCameraCanvas;
 
     // Use this for initialization
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        mainCamera = Camera.main;
-        mainCameraCanvas = mainCamera.GetComponentInChildren<Text>();
+        mainCamera = Camera.main;       
         mL = player.GetComponent<MouseLook>();
         mLTwo = mainCamera.GetComponent<MouseLook>();
         cM = player.GetComponent<CharacterMotor>();

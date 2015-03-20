@@ -10,9 +10,6 @@ public class BuildingPlacer : MonoBehaviour
     public GameObject gameCanvas;
     public Camera mainCamera;
     public GameObject player;
-    private MouseLook mL;
-    private MouseLook mLTwo;
-    private CharacterMotor cM;
     private Text mainCameraCanvas;
     private bool inUI = false;
     private bool ableToAccessUI = false;
@@ -27,9 +24,6 @@ public class BuildingPlacer : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         mainCamera = Camera.main;
         mainCameraCanvas = mainCamera.GetComponentInChildren<Text>();
-        mL = player.GetComponent<MouseLook>();
-        mLTwo = mainCamera.GetComponent<MouseLook>();
-        cM = player.GetComponent<CharacterMotor>();
         Ui = player.GetComponentInChildren<UIScript>();
         myLocation = this.transform.rotation;
     }
@@ -46,7 +40,7 @@ public class BuildingPlacer : MonoBehaviour
             Ui.SetLookDirection(myLocation);
         }
 
-        if(buildingPlaced)
+        if (buildingPlaced)
         {
             btnPlaceBuilding.interactable = false;
         }

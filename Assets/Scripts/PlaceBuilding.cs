@@ -5,13 +5,15 @@ public class PlaceBuilding : MonoBehaviour
 {
 
     private GameObject buildArea;
-    public GameObject building;
+    public GameObject[] buildings;
+    private int buildingSelected;
+    private BuildingManager bM;
 
     // Use this for initialization
     void Start()
     {
-        building.SetActive(false);
         buildArea = transform.Find("BuildingPlacementPlotChild").gameObject;
+        bM = GetComponent<BuildingManager>();
     }
 
     // Update is called once per frame
@@ -20,9 +22,15 @@ public class PlaceBuilding : MonoBehaviour
 
     }
 
-    public void BuildBuilding()
+    public void BuildBuilding(int buildingID)
     {
         buildArea.SetActive(false);
-        building.SetActive(true);
+        bM.CurrentActiveBuilding = buildingID;
+        buildings[buildingID].SetActive(true);
+    }
+
+    public void DeactivateBuilding(int buildingID)
+    {
+        buildings[buildingID].SetActive(false);
     }
 }
