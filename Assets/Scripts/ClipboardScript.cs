@@ -24,6 +24,7 @@ public class ClipboardScript : MonoBehaviour
 	public Quaternion CameraStart;
 	public Quaternion CameraEnd;
 	public Quaternion CameraForClip;
+	public Quaternion CameraNormal;
 	public static bool LockCamera = false;
     private bool lockMovement = true;
 
@@ -35,6 +36,7 @@ public class ClipboardScript : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
+		Screen.lockCursor = true;
         mL = playerbody.GetComponent<MouseLook>();
         mL2 = TheCamera.GetComponentInChildren<MouseLook>();
         cM = playerbody.GetComponent<CharacterMotor>();
@@ -49,13 +51,14 @@ public class ClipboardScript : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-       
+		CameraNormal = TheCamera.transform.localRotation;
 
 		if (Input.GetKeyUp(KeyCode.Q) & CanLerp) 
 		{
 			StartTheLerp();
 			clipboard = !clipboard;
 			CanLerp = false;
+			Screen.lockCursor = !Screen.lockCursor;
 		}
 
 	}
@@ -72,6 +75,12 @@ public class ClipboardScript : MonoBehaviour
 
 
 
+	}
+
+	void SetCameraLocation()
+	{
+		CameraStart = CameraNormal;
+		
 	}
 
     void lockPlayerPosition()
@@ -117,7 +126,7 @@ public class ClipboardScript : MonoBehaviour
 				transform.localPosition = Vector3.Lerp (UpPos,DownPos, PercentageComplete);
                 transform.localScale = Vector3.Lerp(upSize, downSize, PercentageComplete);
 				transform.localRotation = Quaternion.Lerp(UpRotation,DownRotation, PercentageComplete);
-				TheCamera.transform.localRotation = Quaternion.Lerp(CameraForClip,CameraStart,PercentageComplete);
+				TheCamera.transform.localRotation = Quaternion.Lerp(CameraForClip,CameraStart, PercentageComplete);
 
 				if (PercentageComplete >= 1.0f) 
 				{
