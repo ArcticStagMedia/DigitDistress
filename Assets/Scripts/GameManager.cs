@@ -7,4 +7,9 @@ public class GameManager : MonoBehaviour {
     {
         Application.LoadLevel(1);
     }
+
+	public void QuitGame()
+	{
+		Application.Quit ();
+	}
 }
