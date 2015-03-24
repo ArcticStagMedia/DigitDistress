@@ -5,8 +5,10 @@ using UnityEngine.UI;
 public class PauseScript : MonoBehaviour
 {
 	public Canvas canvas;
+	public Canvas Controls;
 	public bool IsPaused = false;
 	public GameObject TheMayor;
+	public bool ShowControls = false;
 	// Use this for initialization
 	void Start () 
 	{
@@ -31,8 +33,18 @@ public class PauseScript : MonoBehaviour
 			Time.timeScale = 0f;
 			Camera.main.GetComponent<MouseLook>().enabled = false;
 			TheMayor.GetComponent<MouseLook>().enabled = false;
-			canvas.enabled = true;
 			Screen.lockCursor = false;
+
+			if(ShowControls == true)
+			{
+				Controls.enabled = true;
+				canvas.enabled = false;
+			}
+			else
+			{
+				Controls.enabled = false;
+				canvas.enabled = true;
+			}
 
 		} else
 		{
@@ -40,6 +52,7 @@ public class PauseScript : MonoBehaviour
 			Camera.main.GetComponent<MouseLook>().enabled = true;
 			TheMayor.GetComponent<MouseLook>().enabled = true;
 			canvas.enabled = false;
+			Controls.enabled = false;
 			Screen.lockCursor = true;
 
 		}
@@ -49,5 +62,10 @@ public class PauseScript : MonoBehaviour
 	public void PauseSwap()
 	{
 		IsPaused = !IsPaused;
+	}
+
+	public void MenuSwap()
+	{
+		ShowControls = !ShowControls;
 	}
 }
