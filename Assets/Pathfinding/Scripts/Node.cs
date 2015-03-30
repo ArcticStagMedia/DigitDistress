@@ -21,6 +21,8 @@ public class Node
     //Use for faster look ups
     public int sortedIndex = -1;
 
+	//This is all giving me errors and not letting me complie
+
     public Node(int indexX, int indexY, float height, int idValue, float xcoord, float zcoord, bool w, Node p = null)
     {
         x = indexX;

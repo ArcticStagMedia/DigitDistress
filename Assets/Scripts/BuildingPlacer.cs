@@ -38,6 +38,7 @@ public class BuildingPlacer : MonoBehaviour
             mainCameraCanvas.text = null;
             Ui.MovementSwitch(true);
             Ui.SetLookDirection(myLocation);
+			Screen.lockCursor = false;
         }
 
         if (buildingPlaced)
