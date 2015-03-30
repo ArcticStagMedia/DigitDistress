@@ -21,11 +21,6 @@ public class UIScript : MonoBehaviour
         cM = player.GetComponent<CharacterMotor>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
     public void MovementSwitch(bool inUI)
     {
         mL.enabled = !inUI;
