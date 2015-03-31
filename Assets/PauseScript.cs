@@ -13,7 +13,7 @@ public class PauseScript : MonoBehaviour
 	void Start () 
 	{
 
-		canvas.enabled = false;
+
 	}
 	
 	// Update is called once per frame
@@ -31,9 +31,9 @@ public class PauseScript : MonoBehaviour
 		{
 
 			Time.timeScale = 0f;
-			Camera.main.GetComponent<MouseLook>().enabled = false;
-			TheMayor.GetComponent<MouseLook>().enabled = false;
-			Screen.lockCursor = false;
+			//Camera.main.GetComponent<MouseLook>().enabled = false;
+			//TheMayor.GetComponent<MouseLook>().enabled = false;
+
 
 			if(ShowControls == true)
 			{
@@ -49,11 +49,11 @@ public class PauseScript : MonoBehaviour
 		} else
 		{
 			Time.timeScale = 1f;
-			Camera.main.GetComponent<MouseLook>().enabled = true;
-			TheMayor.GetComponent<MouseLook>().enabled = true;
+			//Camera.main.GetComponent<MouseLook>().enabled = true;
+			//TheMayor.GetComponent<MouseLook>().enabled = true;
 			canvas.enabled = false;
 			Controls.enabled = false;
-			Screen.lockCursor = true;
+
 
 		}
 	}
