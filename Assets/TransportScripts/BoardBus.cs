@@ -1,71 +1,75 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BoardBus : MonoBehaviour {
-	public BusStopTrigger BSTBB;
+public class BoardBus : MonoBehaviour
+{
+    public BusStopTrigger BSTBB;
 
-	public int CountAI = 0;
-	public bool BusAtStop = false;
-	public bool busFull;
-	public bool digitInside = false;
+    public int CountAI = 0;
+    public bool BusAtStop = false;
+    public bool busFull;
+    public bool digitInside = false;
 
-	public Transform OnBusTransform;
+    public Transform OnBusTransform;
 
 
-	//private int currentPoint;
+    //private int currentPoint;
 
-	//public Transform BusStop;
+    //public Transform BusStop;
 
-	// Use this for initialization
-	void Start () {
-		//currentPoint = 0;
-	}
-	
-	// Update is called once per frame
-	void Update () 
-	{
-		if(busFull == true)
-		{
-			Debug.Log("Bus Full");
-		}
-	}
+    // Use this for initialization
+    void Start()
+    {
+        //currentPoint = 0;
+    }
 
-	public void OnTriggerEnter(Collider other)
-	{ 
-//		if (other.gameObject.tag == "Digit") 
-//		{
-//			Debug.Log("digit inside");
-//			digitInside = true;
-//		}
+    // Update is called once per frame
+    void Update()
+    {
+        if (busFull == true)
+        {
+            Debug.Log("Bus Full");
+        }
+    }
 
-			if (other.gameObject.tag == "Bus") 
-			{
-				BusAtStop = true;
-				Debug.Log ("BusBoarding");
-			} 
+    public void OnTriggerEnter(Collider other)
+    {
+        //		if (other.gameObject.tag == "Digit") 
+        //		{
+        //			Debug.Log("digit inside");
+        //			digitInside = true;
+        //		}
 
-					if (other.gameObject.tag == "Digit" && BusAtStop == true) {
-						CountAI++;
-						//currentPoint++;
+        if (other.gameObject.tag == "Transport")
+        {
+            BusAtStop = true;
+            Debug.Log("TransportBoarding");
+        }
 
-						Debug.Log ("Digit Hit");
+        if (other.gameObject.tag == "Digit" && BusAtStop == true)
+        {
+            CountAI++;
+            //currentPoint++;
 
-			if (CountAI <= 6) {
-								
-				other.gameObject.transform.position = OnBusTransform.position;
-				other.gameObject.renderer.enabled = (false);
+            Debug.Log("Digit Hit");
 
-			}
+            if (CountAI <= 6)
+            {
 
-						
-		}
-	
+                other.gameObject.transform.position = OnBusTransform.position;
+                other.gameObject.renderer.enabled = (false);
 
-	}
+            }
+
+
+        }
+
+
+    }
 
 
 
 }
-	
+
 
 
