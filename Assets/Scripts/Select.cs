@@ -32,7 +32,10 @@ public class Select : MonoBehaviour {
 		}
 		if (Range == true && Input.GetKeyDown (KeyCode.E)) 
 		{
-			Debug.Log ("Hello Mayor!");
+			string[] DigitGreetings = {"Hello Mayor", "Fancy seeing you here","Lovely Day","WOW is it really you?"};
+			System.Random random = new System.Random();
+			string quote = DigitGreetings[random.Next(DigitGreetings.Length)];
+			Debug.Log (quote);
 		}
 	
 
