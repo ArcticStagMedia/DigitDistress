@@ -46,7 +46,7 @@ public class BoardBus : MonoBehaviour
             Debug.Log("TransportBoarding");
         }
 
-        if (other.gameObject.tag == "Digit" && BusAtStop == true)
+        if (other.gameObject.tag == "AI" && BusAtStop == true)
         {
             CountAI++;
             //currentPoint++;
