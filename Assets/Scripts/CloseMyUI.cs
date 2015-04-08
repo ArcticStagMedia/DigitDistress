@@ -33,6 +33,7 @@ public class CloseMyUI : MonoBehaviour
         Ui.MovementSwitch(open);
         myParent.SetActive(open);
         bP.CheckUIState(open);
+        
     }
 
 

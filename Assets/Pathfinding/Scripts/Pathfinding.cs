@@ -12,7 +12,7 @@ public class Pathfinding : MonoBehaviour
 {
     public List<Vector3> Path = new List<Vector3>();
     public PathfinderType PathType = PathfinderType.GridBased;
-	public bool JS = false;
+	private bool JS = false;
 
     public void FindPath(Vector3 startPosition, Vector3 endPosition)
     {

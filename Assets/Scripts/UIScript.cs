@@ -26,10 +26,11 @@ public class UIScript : MonoBehaviour
         mL.enabled = !inUI;
         mLTwo.enabled = !inUI;
         cM.enabled = !inUI;
+        Screen.lockCursor = !inUI;
     }
 
     public void SetLookDirection(Quaternion lookDirection)
     {
-        mainCamera.transform.rotation = lookDirection;
+        mL.transform.rotation = lookDirection;
     }
 }

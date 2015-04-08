@@ -9,11 +9,13 @@ public class PauseScript : MonoBehaviour
 	public bool IsPaused = false;
 	public GameObject TheMayor;
 	public bool ShowControls = false;
+    private UIScript UiScript;
 	// Use this for initialization
 	void Start () 
 	{
-
-
+        UiScript = GetComponent<UIScript>();
+        canvas.enabled = false;
+        Controls.enabled = false;
 	}
 	
 	// Update is called once per frame
@@ -22,39 +24,7 @@ public class PauseScript : MonoBehaviour
 		if(Input.GetKeyUp(KeyCode.Escape))
 		{
 			IsPaused = !IsPaused;
-
-		}
-
-
-
-		if (IsPaused == true)
-		{
-
-			Time.timeScale = 0f;
-			//Camera.main.GetComponent<MouseLook>().enabled = false;
-			//TheMayor.GetComponent<MouseLook>().enabled = false;
-
-
-			if(ShowControls == true)
-			{
-				Controls.enabled = true;
-				canvas.enabled = false;
-			}
-			else
-			{
-				Controls.enabled = false;
-				canvas.enabled = true;
-			}
-
-		} else
-		{
-			Time.timeScale = 1f;
-			//Camera.main.GetComponent<MouseLook>().enabled = true;
-			//TheMayor.GetComponent<MouseLook>().enabled = true;
-			canvas.enabled = false;
-			Controls.enabled = false;
-
-
+            pauseMenu();
 		}
 	}
 
@@ -68,4 +38,44 @@ public class PauseScript : MonoBehaviour
 	{
 		ShowControls = !ShowControls;
 	}
+
+    public void pauseMenu()
+    {
+        if (IsPaused)
+        {
+
+            Time.timeScale = 0f;
+            UiScript.MovementSwitch(IsPaused);
+            //Camera.main.GetComponent<MouseLook>().enabled = false;
+            //TheMayor.GetComponent<MouseLook>().enabled = false;
+
+
+            if (ShowControls == true)
+            {
+                Controls.enabled = true;
+                canvas.enabled = false;
+            }
+            else
+            {
+                Controls.enabled = false;
+                canvas.enabled = true;
+            }
+
+        }
+        else if (!IsPaused)
+        {
+            Time.timeScale = 1f;
+            //Camera.main.GetComponent<MouseLook>().enabled = true;
+            //TheMayor.GetComponent<MouseLook>().enabled = true;
+            canvas.enabled = false;
+            Controls.enabled = false;
+            UiScript.MovementSwitch(IsPaused);
+
+
+        }
+        else
+        {
+            print("HOW THE FUCK DID YOU GET HERE!");
+        }
+    }
 }

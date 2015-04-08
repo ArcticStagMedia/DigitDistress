@@ -6,7 +6,7 @@ public class DynamicMapUpdate : MonoBehaviour
 {
     public float UpdateTimer = 0.5F;
     private Vector3 lastPosition;
-    Bounds lastBounds;
+   public Bounds lastBounds;
     
     void Start () 
     {

@@ -5,7 +5,7 @@ using System.Collections;
 public class BuildingPlacer : MonoBehaviour
 {
 
-    private string txtClickU = "Click \"U\" to view Building Interface";
+    private string txtClickU = "Click \"E\" to view Building Interface";
 
     public GameObject gameCanvas;
     public Camera mainCamera;
@@ -31,13 +31,14 @@ public class BuildingPlacer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (ableToAccessUI && Input.GetKeyDown(KeyCode.U))
+        if (ableToAccessUI && Input.GetKeyDown(KeyCode.E))
         {
             gameCanvas.SetActive(true);
             inUI = true;
             mainCameraCanvas.text = null;
             Ui.MovementSwitch(true);
             Ui.SetLookDirection(myLocation);
+            Screen.lockCursor = false;
 
         }
 

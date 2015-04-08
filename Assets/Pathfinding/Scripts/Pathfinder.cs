@@ -50,7 +50,7 @@ public class Pathfinder : MonoBehaviour
     }
 
 
-    void Start()
+    public void Start()
     {
         if (Tilesize <= 0)
         {
@@ -64,7 +64,7 @@ public class Pathfinder : MonoBehaviour
     float overalltimer = 0;
     int iterations = 0;
     //Go through one 
-    void Update()
+    public void Update()
     {
         timeleft -= Time.deltaTime;
         frames++;
