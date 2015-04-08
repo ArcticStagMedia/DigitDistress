@@ -8,6 +8,7 @@ public class BUSmovement : MonoBehaviour {
 
 	public Transform[] Waypoints;
 	public float moveSpeed;
+	public float BusTime;
 	private int currentPoint;
 
 	// Use this for initialization
@@ -19,12 +20,12 @@ public class BUSmovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		transform.LookAt (Waypoints [currentPoint]);
+		BusTime += Time.deltaTime;
 
 
 		if (transform.position == Waypoints [currentPoint].position) 
 		{
-
+			BusTime = 0;
 			currentPoint++;
 		}
 
@@ -32,13 +33,10 @@ public class BUSmovement : MonoBehaviour {
 		{
 			currentPoint = 0;
 		}
-		if(BBmovement.CountAI == 6)
+		if(BusTime >= 7.5)
 		{
 			transform.position = Vector3.MoveTowards (transform.position, Waypoints [currentPoint].position, moveSpeed * Time.deltaTime);
-		}
-		if(BBmovement1.CountAI == 6)
-		{
-			transform.position = Vector3.MoveTowards (transform.position, Waypoints [currentPoint].position, moveSpeed * Time.deltaTime);
+			transform.LookAt (Waypoints [currentPoint]);
 		}
 	}
 }

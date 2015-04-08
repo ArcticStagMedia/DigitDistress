@@ -17,7 +17,7 @@ public class DepartTrain : MonoBehaviour {
 	}
 	void OnTriggerStay(Collider other)
 	{
-		if (other.gameObject.tag == "Train") 
+		if (other.gameObject.tag == "Transport") 
 		{
 			while (i < 5) 
 			{
@@ -29,7 +29,7 @@ public class DepartTrain : MonoBehaviour {
 	}
 	void OnTriggerExit(Collider other)
 	{
-		if (other.gameObject.tag == "Train") 
+		if (other.gameObject.tag == "Transport") 
 		{
 			i = 0;
 		}
