@@ -17,13 +17,13 @@ public class BoardTrain : MonoBehaviour {
 	public void OnTriggerEnter(Collider other)
 	{ 
 
-		if (other.gameObject.tag == "Train") 
+		if (other.gameObject.tag == "Transport") 
 		{
 			TrainAtStop = true;
 			Debug.Log ("BusBoarding");
 		} 
 		
-		if (other.gameObject.tag == "Digit" && TrainAtStop == true) 
+		if (other.gameObject.tag == "AI" && TrainAtStop == true) 
 		{
 			other.gameObject.transform.position = TrainRemove.position;
 			other.gameObject.SetActive(false);
@@ -35,7 +35,7 @@ public class BoardTrain : MonoBehaviour {
 	}
 	public void OnTriggerExit (Collider other)
 	{
-		if (other.gameObject.tag == "Train") 
+		if (other.gameObject.tag == "Transport") 
 		{
 			TrainAtStop = false;
 		}
