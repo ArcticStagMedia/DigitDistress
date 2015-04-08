@@ -16,7 +16,7 @@ public class GridAI : Pathfinding
         }
         if (transform.position.y != 1)
         {
-            transform.position.Set(transform.position.x, 1, transform.position.z);
+            transform.position.Set(transform.position.x, 2, transform.position.z);
         }
         FindPath();
         if (Path.Count > 0)
@@ -52,7 +52,7 @@ public class GridAI : Pathfinding
         {
             if (transform.position.y != 1)
             {
-                transform.position.Set(transform.position.x, 1, transform.position.z);
+                transform.position.Set(transform.position.x, 2, transform.position.z);
             }
             Vector3 direction = (Path[0] - transform.position).normalized;
 
@@ -75,15 +75,18 @@ public class GridAI : Pathfinding
             float maxY = -Mathf.Infinity;
             foreach (RaycastHit h in hit)
             {
-                if (h.transform.tag == "Grass" || h.transform.tag == "Path" || h.transform.tag == "Building")
+                print(h.transform.tag);
+                if (h.transform.tag == "Grass" || h.transform.tag == "Path")
                 {
                     if (maxY < h.point.y)
                     {
                         maxY = h.point.y;
+                        
                     }
                 }
             }
             transform.position = new Vector3(transform.position.x, maxY + 1F, transform.position.z);
+            
         }
     }
 
