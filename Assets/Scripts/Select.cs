@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Select : MonoBehaviour {
-	bool Range = false;
+	bool Range;
+	public bool Speak;
 	public RaycastHit hit;
 	// Use this for initialization
 	void Start () {
-	
+		Speak = false;
 	}
 	
 	// Update is called once per frame
@@ -17,11 +19,18 @@ public class Select : MonoBehaviour {
 		if (Physics.Raycast (ray, out hit, 100))
 		{
 
-						if (hit.collider.gameObject.GetComponent<Interact> () != null)
-						{
-								hit.collider.gameObject.GetComponent<Interact> ().OnLookEnter ();
-								Range = true;
-						}
+			if (hit.collider.gameObject.GetComponent<Interact> () != null)
+			{
+				hit.collider.gameObject.GetComponent<Interact> ().OnLookEnter ();
+				Range = true;
+
+				if (Range == true && Input.GetKeyDown (KeyCode.E)) 
+				{
+
+					Speak = true;
+				}
+				else Speak = false;
+			}
 
 
 
@@ -30,15 +39,6 @@ public class Select : MonoBehaviour {
 		{
 			Range = false;
 		}
-		if (Range == true && Input.GetKeyDown (KeyCode.E)) 
-		{
-			string[] DigitGreetings = {"Hello Mayor", "Fancy seeing you here","Lovely Day","WOW is it really you?"};
-			System.Random random = new System.Random();
-			string quote = DigitGreetings[random.Next(DigitGreetings.Length)];
-			Debug.Log (quote);
-		}
-	
-
 	
 	}
 }
