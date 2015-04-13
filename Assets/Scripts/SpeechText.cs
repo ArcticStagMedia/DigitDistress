@@ -3,7 +3,8 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class SpeechText : MonoBehaviour {
-	public Select S;
+	//public Select S;
+	public Interact I;
 
 	public GameObject TheSpeechCanvas;
 	public Text txt;
@@ -24,7 +25,7 @@ public class SpeechText : MonoBehaviour {
 		System.Random random = new System.Random ();
 		string quote = DigitGreetings [random.Next (DigitGreetings.Length)];
 
-		if (S.Speak == true) 
+		if (I.selected == true && I.IsSpeaking == true) 
 		{
 			SpeechBoxTime = 0;
 			txt.GetComponent<Text> ().text = quote;

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
@@ -23,15 +23,12 @@ public class Select : MonoBehaviour {
 			{
 				hit.collider.gameObject.GetComponent<Interact> ().OnLookEnter ();
 				Range = true;
-
-				if (Range == true && Input.GetKeyDown (KeyCode.E)) 
-				{
-
-					Speak = true;
-				}
-				else Speak = false;
 			}
-
+			if (Range == true && Input.GetKeyDown (KeyCode.E)) 
+			{
+				Speak = true;
+			}
+			else Speak = false;
 
 
 		}

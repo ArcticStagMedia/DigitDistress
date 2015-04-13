@@ -1,37 +1,37 @@
 fileFormatVersion: 2
-guid: 63c9d95de1223d6478a4a6ff557fa378
+guid: 7a5ffebd17977b447a08dc1cd3762bf0
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: group
-    100004: pasted__pCube1
-    100006: pCube1
-    100008: pCylinder1
-    100010: pPipe1
-    100012: pSphere1
-    400000: //RootNode
-    400002: group
-    400004: pasted__pCube1
-    400006: pCube1
-    400008: pCylinder1
-    400010: pPipe1
-    400012: pSphere1
-    2300000: pasted__pCube1
-    2300002: pCube1
-    2300004: pCylinder1
-    2300006: pPipe1
-    2300008: pSphere1
-    3300000: pasted__pCube1
-    3300002: pCube1
-    3300004: pCylinder1
-    3300006: pPipe1
-    3300008: pSphere1
-    4300000: pPipe1
-    4300002: pCylinder1
-    4300004: pCube1
+    100000: DD_TrashCan_group
+    100002: DD_TrashCan_pCube1
+    100004: DD_TrashCan_pCylinder1
+    100006: DD_TrashCan_pPipe1
+    100008: DD_TrashCan_pSphere1
+    100010: pasted__pCube1
+    100012: //RootNode
+    400000: DD_TrashCan_group
+    400002: DD_TrashCan_pCube1
+    400004: DD_TrashCan_pCylinder1
+    400006: DD_TrashCan_pPipe1
+    400008: DD_TrashCan_pSphere1
+    400010: pasted__pCube1
+    400012: //RootNode
+    2300000: DD_TrashCan_pCube1
+    2300002: DD_TrashCan_pCylinder1
+    2300004: DD_TrashCan_pPipe1
+    2300006: DD_TrashCan_pSphere1
+    2300008: pasted__pCube1
+    3300000: DD_TrashCan_pCube1
+    3300002: DD_TrashCan_pCylinder1
+    3300004: DD_TrashCan_pPipe1
+    3300006: DD_TrashCan_pSphere1
+    3300008: pasted__pCube1
+    4300000: DD_TrashCan_pPipe1
+    4300002: DD_TrashCan_pCylinder1
+    4300004: DD_TrashCan_pCube1
     4300006: pasted__pCube1
-    4300008: pSphere1
+    4300008: DD_TrashCan_pSphere1
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -52,7 +52,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: .00999999978
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
