@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlaceBuilding : MonoBehaviour
+public class AddRemoveBuilding : MonoBehaviour
 {
 
     private GameObject buildArea;
     public GameObject[] buildings;
     private int buildingSelected;
     private BuildingManager bM;
+    private int currentBuilding;
 
     // Use this for initialization
     void Start()
@@ -19,12 +20,11 @@ public class PlaceBuilding : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        currentBuilding = bM.CurrentActiveBuilding;
     }
 
     public void BuildBuilding(int buildingID)
     {
-        buildArea.SetActive(false);
         bM.CurrentActiveBuilding = buildingID;
         buildings[buildingID].SetActive(true);
     }
@@ -32,5 +32,16 @@ public class PlaceBuilding : MonoBehaviour
     public void DeactivateBuilding(int buildingID)
     {
         buildings[buildingID].SetActive(false);
+    }
+
+    public void RemoveTheBuilding()
+    {
+        DeactivateBuilding(currentBuilding);
+    }
+
+    public void PlaceDefaultBuilding()
+    {
+        bM.CurrentActiveBuilding = 0;
+        buildings[0].SetActive(true);
     }
 }

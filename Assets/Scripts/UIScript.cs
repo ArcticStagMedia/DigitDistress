@@ -32,5 +32,6 @@ public class UIScript : MonoBehaviour
     public void SetLookDirection(Quaternion lookDirection)
     {
         mL.transform.rotation = lookDirection;
+        mLTwo.transform.rotation = lookDirection;
     }
 }

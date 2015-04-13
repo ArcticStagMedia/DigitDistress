@@ -19,16 +19,4 @@ public class BuildingManager : MonoBehaviour
         get { return currentActiveBuilding; }
         set { currentActiveBuilding = value; }
     }
-
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }
