@@ -3,8 +3,8 @@ using System.Collections;
 
 public class Interact : MonoBehaviour {
 
-	public GUIText target;
 	private bool selected = false;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -15,10 +15,11 @@ public class Interact : MonoBehaviour {
 		renderer.material.color = Color.white;
 		selected = false;
 
-
 	}
 	public void OnLookEnter()
 	{
 		renderer.material.color = Color.red;
+
 	}
+
 }
