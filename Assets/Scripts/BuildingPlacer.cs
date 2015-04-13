@@ -25,7 +25,7 @@ public class BuildingPlacer : MonoBehaviour
         mainCamera = Camera.main;
         mainCameraCanvas = mainCamera.GetComponentInChildren<Text>();
         Ui = player.GetComponentInChildren<UIScript>();
-        myLocation = this.transform.rotation;
+        myLocation = gameCanvas.transform.rotation;
     }
 
     // Update is called once per frame
