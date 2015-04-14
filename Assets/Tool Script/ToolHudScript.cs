@@ -19,9 +19,9 @@ public class ToolHudScript : MonoBehaviour {
 	void Update () {
 
 
-		txt1.GetComponent<Text> ().text = "Digit Count " + T_S.countAI;
-		txt2.GetComponent<Text> ().text = "Building & Plot Count " + T_S.countBuildingsAndPlots;
-		txt3.GetComponent<Text> ().text = "Digit Used Transport Count " + T_S.countDigitsUsedTransport;
+		txt1.GetComponent<Text> ().text = "Digit Count: " + T_S.countAI;
+		txt2.GetComponent<Text> ().text = "Building & Plot Count: " + T_S.countBuildingsAndPlots;
+		txt3.GetComponent<Text> ().text = "Digit Used Transport Count: " + T_S.countDigitsUsedTransport;
 
 		if (Input.GetKeyDown (KeyCode.P)) 
 		{
