@@ -3,6 +3,7 @@ using System.Collections;
 
 public class BoardBus : MonoBehaviour
 {
+	public ToolScript T_S;
     public BusStopTrigger BSTBB;
 
     public int CountAI = 0;
@@ -50,6 +51,7 @@ public class BoardBus : MonoBehaviour
         {
             CountAI++;
             //currentPoint++;
+			T_S.countDigitsUsedTransport++;
 
             Debug.Log("Digit Hit");
 
