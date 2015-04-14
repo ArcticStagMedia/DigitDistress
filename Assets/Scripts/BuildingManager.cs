@@ -1,22 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-public class BuildingManager : MonoBehaviour
+public static class BuildingManager
 {
+	public static List<GameObject> m_lBuildingPrefabs = new List<GameObject> ();
 
-    private int currentActiveBuilding;
-    private int defaultBuilding = 0;
 
-    public int DefaultBuilding
-    {
-        get { return defaultBuilding; }
-        private set { defaultBuilding = value; }
-    }
+	public static GameObject getBuilding(string name)
+	{
+		return m_lBuildingPrefabs.Find (x => x.name == name);
+		}
     
-
-    public int CurrentActiveBuilding
-    {
-        get { return currentActiveBuilding; }
-        set { currentActiveBuilding = value; }
-    }
+	public static void setAllowedBuildings(List<GameObject> allowedBuildings)
+	{
+		m_lBuildingPrefabs.AddRange (allowedBuildings);
+		}
 }
