@@ -1,58 +1,58 @@
 fileFormatVersion: 2
-guid: 0a15b3467cd8b8243a5a5ae3beed6a10
+guid: c171f6049ce61b647b852f30c00a5f2b
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
-    100000: joint1
-    100002: joint10
-    100004: joint11
-    100006: joint12
-    100008: joint13
-    100010: joint14
-    100012: joint15
-    100014: joint16
-    100016: joint17
-    100018: joint18
-    100020: joint19
-    100022: joint2
-    100024: joint20
-    100026: joint21
-    100028: joint3
-    100030: joint4
-    100032: joint5
-    100034: joint6
-    100036: joint7
-    100038: joint8
-    100040: joint9
-    100042: //RootNode
-    100044: pCylinder6
-    400000: joint1
-    400002: joint10
-    400004: joint11
-    400006: joint12
-    400008: joint13
-    400010: joint14
-    400012: joint15
-    400014: joint16
-    400016: joint17
-    400018: joint18
-    400020: joint19
-    400022: joint2
-    400024: joint20
-    400026: joint21
-    400028: joint3
-    400030: joint4
-    400032: joint5
-    400034: joint6
-    400036: joint7
-    400038: joint8
-    400040: joint9
-    400042: //RootNode
-    400044: pCylinder6
-    4300000: pCylinder6
+    100000: CharacterObject
+    100002: LeftCollarbone
+    100004: LeftElbow
+    100006: LeftFoot
+    100008: LeftHand
+    100010: LeftHip
+    100012: LeftKnee
+    100014: LeftShoulder
+    100016: LeftThigh
+    100018: //RootNode
+    100020: RightCollarbone
+    100022: RightElbow
+    100024: RightFoot
+    100026: RightHand
+    100028: RightHip
+    100030: RightKnee
+    100032: RightShoulder
+    100034: RightThigh
+    100036: ROOTSpinePelvis
+    100038: SpineCenter
+    100040: SpineCore
+    100042: SpineFace
+    100044: SpineTop
+    400000: CharacterObject
+    400002: LeftCollarbone
+    400004: LeftElbow
+    400006: LeftFoot
+    400008: LeftHand
+    400010: LeftHip
+    400012: LeftKnee
+    400014: LeftShoulder
+    400016: LeftThigh
+    400018: //RootNode
+    400020: RightCollarbone
+    400022: RightElbow
+    400024: RightFoot
+    400026: RightHand
+    400028: RightHip
+    400030: RightKnee
+    400032: RightShoulder
+    400034: RightThigh
+    400036: ROOTSpinePelvis
+    400038: SpineCenter
+    400040: SpineCore
+    400042: SpineFace
+    400044: SpineTop
+    4300000: CharacterObject
     7400000: Take 001
     9500000: //RootNode
-    13700000: pCylinder6
+    13700000: CharacterObject
   materials:
     importMaterials: 1
     materialName: 0
