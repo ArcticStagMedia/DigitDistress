@@ -12,8 +12,6 @@ public class SpeechText : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		TheSpeechCanvas.GetComponent<Canvas> ().enabled = false;
-
-
 	}
 	
 	// Update is called once per frame
@@ -30,8 +28,8 @@ public class SpeechText : MonoBehaviour {
 			SpeechBoxTime = 0;
 			txt.GetComponent<Text> ().text = quote;
 			TheSpeechCanvas.GetComponent<Canvas> ().enabled = true;
-
 		}
+
 		if (SpeechBoxTime >= 5) 
 		{
 			TheSpeechCanvas.GetComponent<Canvas> ().enabled = false;

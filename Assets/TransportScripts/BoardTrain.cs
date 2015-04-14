@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class BoardTrain : MonoBehaviour {
+	public ToolScript T_S;
 
 	public Transform TrainRemove;
 	public bool TrainAtStop;
@@ -28,7 +29,8 @@ public class BoardTrain : MonoBehaviour {
 			other.gameObject.transform.position = TrainRemove.position;
 			other.gameObject.SetActive(false);
 			Debug.Log ("Digit on train");
-			
+
+			T_S.countDigitsUsedTransport++;
 		}
 		
 		

@@ -19,7 +19,7 @@ public class Interact : MonoBehaviour {
 	public void OnLookEnter()
 	{
 		selected = true;
-		renderer.material.color = Color.red;
+		renderer.material.color = Color.cyan;
 
 		if (selected == true && Input.GetKeyDown (KeyCode.E)) 
 		{
