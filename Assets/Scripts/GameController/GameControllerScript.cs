@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class GameController : MonoBehaviour
+public class GameControllerScript: MonoBehaviour
 {
     //private GameController gameController;
     private GameObject gameControllerObject;

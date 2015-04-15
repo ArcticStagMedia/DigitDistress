@@ -69,4 +69,14 @@ public class FinanceTextScript : MonoBehaviour
 		UpdateFinanceText ();
 
 	}
+
+	public void BuiltMcafee ()
+	{
+		AddFinanceRecord ("Built", "Mcafee", 50);
+	}
+
+	public void BuiltHardDisk()
+	{
+		AddFinanceRecord ("Built", "Hard Disk", 250);
+	}
 }
