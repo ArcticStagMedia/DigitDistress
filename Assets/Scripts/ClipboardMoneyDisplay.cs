@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class Money : MonoBehaviour
+public class ClipboardMoneyDisplay : MonoBehaviour
 {
 
     private GameController gameController;
