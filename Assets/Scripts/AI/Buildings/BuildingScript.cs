@@ -18,4 +18,11 @@ public class BuildingScript : MonoBehaviour
 		{
 	
 		}
+
+		void OnCollisionEnter (Collision other)
+		{
+				if (other.gameObject.tag == "Agent") {
+						other.gameObject.GetComponent<AICore> ().setState (m_AssociatedEmotion);
+				}
+		}
 }

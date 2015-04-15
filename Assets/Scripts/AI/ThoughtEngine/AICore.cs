@@ -27,16 +27,20 @@ namespace DigitDistress.AI.ThoughtEngine
 
 				public AiState m_CurrentState = AiState.IDLE;
 
-				Vector3 m_vTargetLocation = Vector3.zero;
+				Vector3 m_vTargetLocation = new Vector3 ();
 
 				NavMeshAgent m_NavAg;
 				NavMeshHit irrelevent;
-
+				Animator animator;
 					
 				// Use this for initialization
 				void Start ()
 				{
-						m_NavAg = GetComponent<NavMeshAgent> ();
+						m_lBuildings = new List<GameObject> ();
+						m_NavAg = this.GetComponent<NavMeshAgent> ();
+						NavMeshHit irrelevent = new NavMeshHit ();
+						m_vTargetLocation = Vector3.zero;
+						animator = GetComponent<Animator> ();
 						//		m_DesireList = new List<DesireBase> ();
 						//		m_EmotionList = new List<EmotionBase> ();
 						//		m_MemoryList = new List<MemoryBase> ();
@@ -46,20 +50,28 @@ namespace DigitDistress.AI.ThoughtEngine
 				// Update is called once per frame
 				void Update ()
 				{
+						//Debug.Log ("Update");
 						Mathf.Clamp (m_Entertainment, 0.0f, 100.0f);
 						Mathf.Clamp (m_Hunger, 0.0f, 100.0f);
 						switch (m_CurrentState) {
 						case AiState.IDLE:
 								{
+										animator.SetBool ("Movement", false);
+										if (m_vTargetLocation != Vector3.zero) {
+												m_vTargetLocation = Vector3.zero;
+										}
 										if (Random.Range (0, 40) == 20) {
 												m_CurrentState = AiState.SEARCHING;
+												break;
 										}
 										if (m_Entertainment < 20.0f) {
 												if (!m_lBuildings.Find (x => x.GetComponent<BuildingScript> ().m_AssociatedEmotion == "Fun")) {
 														m_CurrentState = AiState.SEARCHING;
+														break;
 												} else {
-
+														m_NavAg.SetDestination (getClosestBuilding ("Fun"));
 														m_CurrentState = AiState.TRAVELLINGTOENTER;
+														break;
 						
 												}
 										}
@@ -67,6 +79,7 @@ namespace DigitDistress.AI.ThoughtEngine
 												if (!m_lBuildings.Find (x => x.GetComponent<BuildingScript> ().m_AssociatedEmotion == "Hunger")) {
 														m_CurrentState = AiState.SEARCHING;
 												} else {
+														m_NavAg.SetDestination (getClosestBuilding ("Hunger"));
 														m_CurrentState = AiState.TRAVELLINGTOFOOD;
 						
 												}
@@ -75,23 +88,44 @@ namespace DigitDistress.AI.ThoughtEngine
 								}
 						case AiState.SEARCHING:
 								{
-										if (Random.Range (0, 100) == 49) {
+					
+										if (m_vTargetLocation == Vector3.zero || this.collider.bounds.Contains (m_vTargetLocation)) {
 												m_vTargetLocation = Vector3.zero;
-												m_CurrentState = AiState.IDLE;
-										}
-										if (m_Entertainment < 20.0f) {
-												if (!m_lBuildings.Find (x => x.GetComponent<BuildingScript> ().m_AssociatedEmotion == "Fun")) {
+												
+												m_vTargetLocation.x = transform.position.x + Random.Range (-40.0f, 40.0f);
+												m_vTargetLocation.y = transform.position.y;
+												m_vTargetLocation.z = transform.position.z + Random.Range (-40.0f, 40.0f);
+												if (setNewDestination (m_vTargetLocation)) {
 														//
 												} else {
+														m_CurrentState = AiState.IDLE;
+														break;
+												}
+
+										}
+
+										//if (Random.Range (0, 100) == 49) {
+										//m_vTargetLocation = Vector3.zero;
+										//m_CurrentState = AiState.IDLE;
+										//break;
+										//}
+										if (m_Entertainment < 20.0f) {
+												if (!m_lBuildings.Find (x => x.GetComponent<BuildingScript> ().m_AssociatedEmotion == "Fun")) {
+														
+												} else {
+														m_NavAg.SetDestination (getClosestBuilding ("Fun"));
 														m_CurrentState = AiState.TRAVELLINGTOENTER;
+														break;
 						
 												}
 										}
 										if (m_Hunger < 20.0f) {
 												if (!m_lBuildings.Find (x => x.GetComponent<BuildingScript> ().m_AssociatedEmotion == "Hunger")) {
-														//
+														
 												} else {
+														m_NavAg.SetDestination (getClosestBuilding ("Hunger"));
 														m_CurrentState = AiState.TRAVELLINGTOFOOD;
+														break;
 						
 												}
 										}
@@ -110,6 +144,7 @@ namespace DigitDistress.AI.ThoughtEngine
 								}
 						case AiState.EATING:
 								{
+										animator.SetBool ("Movement", false);
 										m_Hunger += Random.Range (0.2f, 0.5f);
 										if (m_Hunger > 90.0f) {
 												m_CurrentState = AiState.IDLE;
@@ -118,6 +153,7 @@ namespace DigitDistress.AI.ThoughtEngine
 								}
 						case AiState.PLAYING:
 								{
+										animator.SetBool ("Movement", false);
 										m_Entertainment += Random.Range (0.2f, 0.5f);
 										if (m_Entertainment > 90.0f) {
 												m_CurrentState = AiState.IDLE;
@@ -129,32 +165,33 @@ namespace DigitDistress.AI.ThoughtEngine
 //
 										break;
 								}
-						}
-
 						
-						
-
 //While Not Recharging
-						if (m_Entertainment > 0.0f && m_CurrentState != AiState.PLAYING) {
-								m_Entertainment -= Random.Range (0.1f, 0.25f);
-						} else {
+								if (m_Entertainment > 0.0f && m_CurrentState != AiState.PLAYING) {
+										m_Entertainment -= Random.Range (0.1f, 0.25f);
+								} else {
 
-						}
+								}
 
-						if (m_Hunger > 0.0f && m_CurrentState != AiState.EATING) {
-								m_Entertainment -= Random.Range (0.1f, 0.25f);
-						} else {
+								if (m_Hunger > 0.0f && m_CurrentState != AiState.EATING) {
+										m_Entertainment -= Random.Range (0.1f, 0.25f);
+								} else {
 //
-						}					
+								}				
+						}
 				}
 
 				public void addBuilding (GameObject obj)
 				{
 						m_lBuildings.Add (obj);
 				}
+				
 				Vector3 getClosestBuilding (string bType)
 				{
 						Vector3 vect = Vector3.zero;
+						if (m_lBuildings.Count <= 0) {
+								return Vector3.zero;
+						}
 						foreach (GameObject obj in m_lBuildings.FindAll (x => x.GetComponent<BuildingScript> ().m_AssociatedEmotion == bType)) {
 								if (vect == Vector3.zero) {
 										vect = obj.transform.position;
@@ -164,15 +201,35 @@ namespace DigitDistress.AI.ThoughtEngine
 						}
 						return vect;
 				}
+				
 				bool setNewDestination (Vector3 dest)
 				{
-						if (NavMesh.SamplePosition (dest, out irrelevent, Mathf.Infinity, -1)) {
+						if (NavMesh.CalculatePath (transform.position, dest, NavMesh.GetNavMeshLayerFromName ("Default"), new NavMeshPath ()) || NavMesh.CalculatePath (transform.position, dest, NavMesh.GetNavMeshLayerFromName ("Road"), new NavMeshPath ())) {
 								m_NavAg.SetDestination (dest);
+								animator.SetBool ("Movement", true);
 								return true;
-						} else {
-								return false;
 						}
-						
+						return false;
+				}
+
+				public void setState (string sType)
+				{
+						switch (sType) {
+						case "Fun":
+								{
+										m_CurrentState = AiState.PLAYING;
+										break;
+								}
+						case "Hunger":
+								{
+										m_CurrentState = AiState.EATING;
+										break;
+								}
+						default:
+//
+								break;
+						}
+						m_CurrentState = AiState.PLAYING;
 				}
 		}
 }
