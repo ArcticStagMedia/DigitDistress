@@ -38,4 +38,9 @@ public class GameController : MonoBehaviour
     {
         money = money + mny;
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
