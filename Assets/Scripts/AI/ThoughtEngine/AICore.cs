@@ -60,18 +60,18 @@ namespace DigitDistress.AI.ThoughtEngine
 										if (m_vTargetLocation != Vector3.zero) {
 												m_vTargetLocation = Vector3.zero;
 										}
-										if (Random.Range (0, 40) == 20) {
+										if (Random.Range (0, 10) == 5) {
 												m_CurrentState = AiState.SEARCHING;
-												break;
+												
 										}
 										if (m_Entertainment < 20.0f) {
 												if (!m_lBuildings.Find (x => x.GetComponent<BuildingScript> ().m_AssociatedEmotion == "Fun")) {
 														m_CurrentState = AiState.SEARCHING;
-														break;
+														
 												} else {
 														m_NavAg.SetDestination (getClosestBuilding ("Fun"));
 														m_CurrentState = AiState.TRAVELLINGTOENTER;
-														break;
+														
 						
 												}
 										}
@@ -90,16 +90,17 @@ namespace DigitDistress.AI.ThoughtEngine
 								{
 					
 										if (m_vTargetLocation == Vector3.zero || this.collider.bounds.Contains (m_vTargetLocation)) {
-												m_vTargetLocation = Vector3.zero;
+												//m_vTargetLocation = Vector3.zero;
 												
-												m_vTargetLocation.x = transform.position.x + Random.Range (-40.0f, 40.0f);
-												m_vTargetLocation.y = transform.position.y;
-												m_vTargetLocation.z = transform.position.z + Random.Range (-40.0f, 40.0f);
+												m_vTargetLocation.x = this.transform.position.x + Random.Range (-5.0f, 5.0f);
+												m_vTargetLocation.y = this.transform.position.y;
+												m_vTargetLocation.z = this.transform.position.z + Random.Range (-5.0f, 5.0f);
 												if (setNewDestination (m_vTargetLocation)) {
 														//
 												} else {
+														Debug.Log ("No Path");
 														m_CurrentState = AiState.IDLE;
-														break;
+														
 												}
 
 										}
@@ -115,7 +116,7 @@ namespace DigitDistress.AI.ThoughtEngine
 												} else {
 														m_NavAg.SetDestination (getClosestBuilding ("Fun"));
 														m_CurrentState = AiState.TRAVELLINGTOENTER;
-														break;
+														
 						
 												}
 										}
@@ -125,12 +126,13 @@ namespace DigitDistress.AI.ThoughtEngine
 												} else {
 														m_NavAg.SetDestination (getClosestBuilding ("Hunger"));
 														m_CurrentState = AiState.TRAVELLINGTOFOOD;
-														break;
+														
 						
 												}
 										}
-										break;
 										m_NavAg.Move (Vector3.zero);
+										break;
+										
 								}
 						case AiState.TRAVELLINGTOFOOD:
 								{
@@ -165,20 +167,19 @@ namespace DigitDistress.AI.ThoughtEngine
 //
 										break;
 								}
-						
-//While Not Recharging
-								if (m_Entertainment > 0.0f && m_CurrentState != AiState.PLAYING) {
-										m_Entertainment -= Random.Range (0.1f, 0.25f);
-								} else {
-
-								}
-
-								if (m_Hunger > 0.0f && m_CurrentState != AiState.EATING) {
-										m_Entertainment -= Random.Range (0.1f, 0.25f);
-								} else {
-//
-								}				
 						}
+//While Not Recharging
+						if (m_Entertainment > 0.0f && m_CurrentState != AiState.PLAYING) {
+								m_Entertainment -= Random.Range (0.01f, 0.025f);
+						} else {
+
+						}
+
+						if (m_Hunger > 0.0f && m_CurrentState != AiState.EATING) {
+								m_Hunger -= Random.Range (0.01f, 0.025f);
+						} else {
+//
+						}				
 				}
 
 				public void addBuilding (GameObject obj)
@@ -204,6 +205,7 @@ namespace DigitDistress.AI.ThoughtEngine
 				
 				bool setNewDestination (Vector3 dest)
 				{
+						Debug.Log (dest.ToString ());
 						if (NavMesh.CalculatePath (transform.position, dest, NavMesh.GetNavMeshLayerFromName ("Default"), new NavMeshPath ()) || NavMesh.CalculatePath (transform.position, dest, NavMesh.GetNavMeshLayerFromName ("Road"), new NavMeshPath ())) {
 								m_NavAg.SetDestination (dest);
 								animator.SetBool ("Movement", true);
