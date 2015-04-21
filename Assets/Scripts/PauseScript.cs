@@ -78,4 +78,9 @@ public class PauseScript : MonoBehaviour
             print("HOW THE FUCK DID YOU GET HERE!");
         }
     }
+
+    public void MainMenuButton()
+    {
+        Application.LoadLevel(0);
+    }
 }
