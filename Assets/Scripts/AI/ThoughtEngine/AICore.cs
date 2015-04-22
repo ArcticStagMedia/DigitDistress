@@ -96,10 +96,12 @@ namespace DigitDistress.AI.ThoughtEngine
 												m_vTargetLocation = transform.position + Random.insideUnitSphere * 30.0f;
 												m_vTargetLocation.y = transform.position.y;
 												if (setNewDestination (m_vTargetLocation)) {
-														//
+														animator.SetBool ("Movement", true);
+						
 												} else {
 														Debug.Log ("No Path");
 														m_CurrentState = AiState.IDLE;
+														animator.SetBool ("Movement", false);
 														
 												}
 

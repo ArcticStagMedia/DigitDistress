@@ -239,7 +239,7 @@ ModelImporter:
       scale: {x: 1, y: .999999821, z: 1}
       transformModified: 1
     - name: SpineCore
-      position: {x: -.0184873883, y: -.000100324716, z: 4.12730163e-18}
+      position: {x: -.0184873883, y: -.000100324709, z: 4.12730163e-18}
       rotation: {x: -2.98023224e-08, y: 2.98023224e-08, z: -.00543451309, w: .999985278}
       scale: {x: .999999762, y: .999999881, z: .999999821}
       transformModified: 1
@@ -269,7 +269,7 @@ ModelImporter:
       scale: {x: .999999821, y: 1, z: 1}
       transformModified: 1
     - name: LeftElbow
-      position: {x: -.0168464202, y: 4.440892e-18, z: -6.07494573e-19}
+      position: {x: -.0168464202, y: 4.440892e-18, z: -6.07494522e-19}
       rotation: {x: 1.49638652e-07, y: -3.21544348e-06, z: .0330708213, w: .999453008}
       scale: {x: 1.00000048, y: 1.00000012, z: 1.00000036}
       transformModified: 1
@@ -279,17 +279,17 @@ ModelImporter:
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: RightCollarbone
-      position: {x: 1.47362653e-05, y: .00713328831, z: -.000373938936}
+      position: {x: 1.47362643e-05, y: .00713328831, z: -.000373938936}
       rotation: {x: -.707106829, y: .707106829, z: 2.56944103e-17, w: -2.56944103e-17}
       scale: {x: 1.00000012, y: 1.00000012, z: 1.00000012}
       transformModified: 1
     - name: RightShoulder
-      position: {x: -.00641913153, y: -5.4351815e-20, z: .000373938936}
+      position: {x: -.00641913153, y: -5.43518085e-20, z: .000373938936}
       rotation: {x: .0017062251, y: -.00191232713, z: .00721123116, w: .999970734}
       scale: {x: .999999821, y: .999999881, z: .999999881}
       transformModified: 1
     - name: RightElbow
-      position: {x: -.0167505238, y: 1.3877787e-18, z: 4.22321068e-19}
+      position: {x: -.0167505238, y: 1.38777859e-18, z: 4.22321068e-19}
       rotation: {x: -2.8059377e-08, y: -3.14488169e-08, z: .0190882832, w: .999817848}
       scale: {x: 1.00000048, y: 1.00000024, z: 1.00000036}
       transformModified: 1
@@ -304,7 +304,7 @@ ModelImporter:
       scale: {x: .999999642, y: .999999881, z: .999999642}
       transformModified: 1
     - name: RightThigh
-      position: {x: -.0112710195, y: -1.87350122e-18, z: -2.50266906e-18}
+      position: {x: -.0112710185, y: -1.87350122e-18, z: -2.50266886e-18}
       rotation: {x: 0, y: 0, z: .00793576147, w: .999968529}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
@@ -314,7 +314,7 @@ ModelImporter:
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: RightFoot
-      position: {x: -.0135950726, y: 5.32266041e-17, z: -2.97042212e-18}
+      position: {x: -.0135950716, y: 5.32266041e-17, z: -2.97042212e-18}
       rotation: {x: -.5, y: -.5, z: -.5, w: .5}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
