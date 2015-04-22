@@ -50,6 +50,7 @@ namespace DigitDistress.AI.ThoughtEngine
 				// Update is called once per frame
 				void Update ()
 				{
+
 						//Debug.Log ("Update");
 						Mathf.Clamp (m_Entertainment, 0.0f, 100.0f);
 						Mathf.Clamp (m_Hunger, 0.0f, 100.0f);
@@ -89,12 +90,11 @@ namespace DigitDistress.AI.ThoughtEngine
 						case AiState.SEARCHING:
 								{
 					
-										if (m_vTargetLocation == Vector3.zero || this.collider.bounds.Contains (m_vTargetLocation)) {
+										if (m_vTargetLocation == Vector3.zero || m_NavAg.remainingDistance <= 1.0f) {
 												//m_vTargetLocation = Vector3.zero;
 												
-												m_vTargetLocation.x = this.transform.position.x + Random.Range (-5.0f, 5.0f);
-												m_vTargetLocation.y = this.transform.position.y;
-												m_vTargetLocation.z = this.transform.position.z + Random.Range (-5.0f, 5.0f);
+												m_vTargetLocation = transform.position + Random.insideUnitSphere * 30.0f;
+												m_vTargetLocation.y = transform.position.y;
 												if (setNewDestination (m_vTargetLocation)) {
 														//
 												} else {
@@ -205,13 +205,21 @@ namespace DigitDistress.AI.ThoughtEngine
 				
 				bool setNewDestination (Vector3 dest)
 				{
-						Debug.Log (dest.ToString ());
-						if (NavMesh.CalculatePath (transform.position, dest, NavMesh.GetNavMeshLayerFromName ("Default"), new NavMeshPath ()) || NavMesh.CalculatePath (transform.position, dest, NavMesh.GetNavMeshLayerFromName ("Road"), new NavMeshPath ())) {
-								m_NavAg.SetDestination (dest);
-								animator.SetBool ("Movement", true);
+						//Debug.Log ("Sidewalk: " + NavMesh.GetNavMeshLayerFromName ("sidewalk"));
+						//Debug.Log ("Road: " + NavMesh.GetNavMeshLayerFromName ("road"));
+
+						if (NavMesh.SamplePosition (dest, out irrelevent, 1.0f, 1 << NavMesh.GetNavMeshLayerFromName ("Default"))) {
+								m_NavAg.SetDestination (irrelevent.position);
+								Debug.Log ("Path On path");
 								return true;
+						} else if (NavMesh.SamplePosition (dest, out irrelevent, 1.0f, 1 << NavMesh.GetNavMeshLayerFromName ("Jump"))) {
+								m_NavAg.SetDestination (irrelevent.position);
+								Debug.Log ("Path On road");
+								return true;
+						} else {
+								return false;
 						}
-						return false;
+						
 				}
 
 				public void setState (string sType)
