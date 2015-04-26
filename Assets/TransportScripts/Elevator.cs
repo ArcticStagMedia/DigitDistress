@@ -5,29 +5,24 @@ public class Elevator : MonoBehaviour {
 
 	public Transform[] Waypoints;
 	public float moveSpeed;
-	private int currentPoint;
 	public float EleTime;
-	public float ElevatorWait;
-	public float ElevatorRiseTime;
+	private int currentPoint;
+	
 	// Use this for initialization
 	void Start () {
 		transform.position = Waypoints [0].position;
 		currentPoint = 0;
-
 	}
 	
 	// Update is called once per frame
-	void Update () {
-
+	void Update () 
+	{
 		EleTime += Time.deltaTime;
-
-		if (EleTime >= ElevatorRiseTime) 
-		{
-			EleTime = 0;
-		}
-
+		
+		
 		if (transform.position == Waypoints [currentPoint].position) 
 		{
+			EleTime = 0;
 			currentPoint++;
 		}
 		
@@ -35,9 +30,10 @@ public class Elevator : MonoBehaviour {
 		{
 			currentPoint = 0;
 		}
-		if (EleTime >= ElevatorWait) 
+		if(EleTime >= 5)
 		{
 			transform.position = Vector3.MoveTowards (transform.position, Waypoints [currentPoint].position, moveSpeed * Time.deltaTime);
+			//transform.LookAt (Waypoints [currentPoint]);
 		}
 	}
 }

@@ -3,40 +3,40 @@ using System.Collections;
 
 public class BUSmovement : MonoBehaviour {
 
-	public BoardBus BBmovement;
-	public BoardBus BBmovement1;
-
-	public Transform[] Waypoints;
-	public float moveSpeed;
+	public Transform[] BusWaypoints;
+	public float BusmoveSpeed;
 	public float BusTime;
-	private int currentPoint;
-
+	private int BuscurrentPoint;
+	
 	// Use this for initialization
 	void Start () {
-		transform.position = Waypoints [0].position;
-		currentPoint = 0;
+		transform.position = BusWaypoints [0].position;
+		BuscurrentPoint = 0;
+		BusTime = 0f;
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
 		BusTime += Time.deltaTime;
-
-
-		if (transform.position == Waypoints [currentPoint].position) 
+		
+		
+		if (transform.position == BusWaypoints [BuscurrentPoint].position) 
 		{
-			BusTime = 0;
-			currentPoint++;
+			BusTime = 0f;
+			BuscurrentPoint++;
+			transform.LookAt (BusWaypoints [BuscurrentPoint]);
+			//BusTime = 0;
 		}
-
-		if (currentPoint >= Waypoints.Length) 
+		
+		if (BuscurrentPoint >= BusWaypoints.Length) 
 		{
-			currentPoint = 0;
+			BuscurrentPoint = 0;
 		}
-		if(BusTime >= 7.5)
+		if(BusTime >= 2)
 		{
-			transform.position = Vector3.MoveTowards (transform.position, Waypoints [currentPoint].position, moveSpeed * Time.deltaTime);
-			transform.LookAt (Waypoints [currentPoint]);
+			transform.position = Vector3.MoveTowards (transform.position, BusWaypoints [BuscurrentPoint].position, BusmoveSpeed * Time.deltaTime);
+			//transform.LookAt (Waypoints [currentPoint]);
 		}
 	}
 }

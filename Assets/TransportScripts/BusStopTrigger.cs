@@ -4,6 +4,8 @@ using System.Collections;
 public class BusStopTrigger : MonoBehaviour
 {
     public BoardBus BB;
+	//public BUSmovement B_Move;
+
     public bool BusIsAtStop = false;
     public Transform BusStop;
     //GameObject Digits;
@@ -24,6 +26,7 @@ public class BusStopTrigger : MonoBehaviour
 
         if (other.gameObject.tag == "Transport")
         {
+			//B_Move.BusTime = 0;
             BusIsAtStop = true;
             Debug.Log("Bus Stopped");
             //BB.CountAI = 0;

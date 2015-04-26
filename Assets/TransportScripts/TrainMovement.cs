@@ -30,7 +30,7 @@ public class TrainMovement : MonoBehaviour {
 		{
 			currentPoint = 0;
 		}
-		if(TrainTime >= 15)
+		if(TrainTime >= 2)
 		{
 			transform.position = Vector3.MoveTowards (transform.position, Waypoints [currentPoint].position, moveSpeed * Time.deltaTime);
 			//transform.LookAt (Waypoints [currentPoint]);
