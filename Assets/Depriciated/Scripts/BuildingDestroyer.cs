@@ -13,11 +13,7 @@ public class BuildingDestroyer : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		if (Input.GetKeyDown (KeyCode.N)) 
-		{
-			print ("test");
-			Destroy();
-		}
+
 	
 	}
 
