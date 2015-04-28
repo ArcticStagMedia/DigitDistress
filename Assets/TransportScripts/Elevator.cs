@@ -17,7 +17,7 @@ public class Elevator : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		EleTime += Time.deltaTime;
+		EleTime += Time.fixedDeltaTime;
 		
 		
 		if (transform.position == Waypoints [currentPoint].position) 
