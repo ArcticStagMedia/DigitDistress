@@ -27,7 +27,7 @@ public class PauseScript : MonoBehaviour
 	{
 		if(Input.GetKeyUp(KeyCode.Escape))
 		{
-			IsPaused = !IsPaused;
+            PauseSwap();
             pauseMenu();
 
 			if(ShowPauseMenu == false)

@@ -14,17 +14,29 @@ public class GameControllerEditor : EditorWindow
 
 
     public bool isPerpetual = false;
+    bool gameControllerPlacedInScene = false;
 
     // Use this for initialization
     void OnEnable()
     {
-        gameControllerObject = Resources.Load<GameObject>("GameController");
+        if (!GameObject.FindGameObjectWithTag("GameController"))
+        {
+            gameControllerObject = Resources.Load<GameObject>("GameController");
+        }
+        else if (GameObject.FindGameObjectWithTag("GameController"))
+        {
+            gameControllerPlacedInScene = true;
+        }
     }
 
     void Update()
     {
-        gameController = gameControllerObject.GetComponent<GameController>();
-        mainCamera = Camera.main;
+        if (gameControllerPlacedInScene)
+        {
+            gameControllerObject = GameObject.FindGameObjectWithTag("GameController");
+            gameController = gameControllerObject.GetComponent<GameController>();
+            mainCamera = Camera.main;
+        }
     }
 
     [MenuItem("Game Controller Package/Editor")]
@@ -41,13 +53,15 @@ public class GameControllerEditor : EditorWindow
         {
             if (!GameObject.FindGameObjectWithTag("GameController"))
             {
+
                 Instantiate(gameControllerObject, Vector3.zero, Quaternion.identity);
                 GameObject objectToRename = GameObject.FindGameObjectWithTag("GameController");
                 objectToRename.gameObject.name = "GameController";
-                if(mainCamera.GetComponent<AudioListener>())
+                if (mainCamera.GetComponent<AudioListener>())
                 {
                     DestroyImmediate(mainCamera.GetComponent<AudioListener>());
-                }else
+                }
+                else
                 {
                     Debug.Log("No audio listener on main camera");
                 }
@@ -61,15 +75,13 @@ public class GameControllerEditor : EditorWindow
             {
                 Debug.LogError("Something went wrong with tag \"GameController\"");
             }
+            
         }
 
         isPerpetual = GUILayout.Toggle(isPerpetual, "Perpetual GameController?");
         if (GUILayout.Button("Update GameController"))
         {
-            if (isPerpetual)
-            {
-                gameController.setPerpetual(isPerpetual);
-            }
+            gameController.isPerpetual = this.isPerpetual;
         }
     }
 }
@@ -79,7 +91,7 @@ public class AlredyInUsePopup : EditorWindow
     public static void ShowWindow()
     {
         var window = new AlredyInUsePopup();
-        window.position = new Rect(Screen.width/2,Screen.height/2,250,75);
+        window.position = new Rect(Screen.width / 2, Screen.height / 2, 250, 75);
         window.ShowPopup();
         //EditorWindow.GetWindow(typeof(AlredyInUsePopup), true);
     }
