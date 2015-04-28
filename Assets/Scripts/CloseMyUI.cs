@@ -7,7 +7,7 @@ public class CloseMyUI : MonoBehaviour
 {
 
     public GameObject builderSphere;
-    public GameObject uiToClose;
+   
     private Camera mainCamera;
     private UIScript Ui;
     private BuildingPlacer bP;
@@ -20,7 +20,7 @@ public class CloseMyUI : MonoBehaviour
         Ui = mainCamera.GetComponentInChildren<UIScript>();
         bP = builderSphere.GetComponent<BuildingPlacer>();
 
-        uiToClose = this.gameObject;
+        
     }
     // Update is called once per frame
     void Update()
@@ -31,7 +31,7 @@ public class CloseMyUI : MonoBehaviour
     public void CloseMeNow(bool open)
     {
         Ui.MovementSwitch(open);
-        uiToClose.SetActive(open);
+        
         bP.CheckUIState(open);
         
     }
