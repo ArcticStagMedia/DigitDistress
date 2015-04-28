@@ -6,9 +6,12 @@ public class PauseScript : MonoBehaviour
 {
 	public Canvas canvas;
 	public Canvas Controls;
+	public Canvas Sound;
 	public bool IsPaused = false;
 	public GameObject TheMayor;
 	public bool ShowControls = false;
+	public bool ShowSoundControls = false;
+	public bool ShowPauseMenu = true;
     private UIScript UiScript;
 	// Use this for initialization
 	void Start () 
@@ -16,6 +19,7 @@ public class PauseScript : MonoBehaviour
         UiScript = GetComponent<UIScript>();
         canvas.enabled = false;
         Controls.enabled = false;
+		Sound.enabled = false;
 	}
 	
 	// Update is called once per frame
@@ -25,6 +29,37 @@ public class PauseScript : MonoBehaviour
 		{
 			IsPaused = !IsPaused;
             pauseMenu();
+
+			if(ShowPauseMenu == false)
+			{
+				ShowPauseMenu = true;
+			}
+		}
+
+		if (IsPaused)
+		{
+			
+			Time.timeScale = 0f;
+
+			//Camera.main.GetComponent<MouseLook>().enabled = false;
+			//TheMayor.GetComponent<MouseLook>().enabled = false;
+			
+		}
+		else if (!IsPaused)
+		{
+			Time.timeScale = 1f;
+			//Camera.main.GetComponent<MouseLook>().enabled = true;
+			//TheMayor.GetComponent<MouseLook>().enabled = true;
+			canvas.enabled = false;
+			Controls.enabled = false;
+			Sound.enabled = false;
+
+			
+			
+		}
+		else
+		{
+			print("HOW THE FUCK DID YOU GET HERE!");
 		}
 	}
 
@@ -36,51 +71,29 @@ public class PauseScript : MonoBehaviour
 
 	public void MenuSwap()
 	{
-		ShowControls = !ShowControls;
+		Controls.enabled = true;
+		canvas.enabled = false;
+		Sound.enabled = false;
+
 	}
 
     public void pauseMenu()
     {
-        if (IsPaused)
-        {
-
-            Time.timeScale = 0f;
-            UiScript.MovementSwitch(IsPaused);
-            //Camera.main.GetComponent<MouseLook>().enabled = false;
-            //TheMayor.GetComponent<MouseLook>().enabled = false;
-
-
-            if (ShowControls == true)
-            {
-                Controls.enabled = true;
-                canvas.enabled = false;
-            }
-            else
-            {
-                Controls.enabled = false;
-                canvas.enabled = true;
-            }
-
-        }
-        else if (!IsPaused)
-        {
-            Time.timeScale = 1f;
-            //Camera.main.GetComponent<MouseLook>().enabled = true;
-            //TheMayor.GetComponent<MouseLook>().enabled = true;
-            canvas.enabled = false;
-            Controls.enabled = false;
-            UiScript.MovementSwitch(IsPaused);
-
-
-        }
-        else
-        {
-            print("HOW THE FUCK DID YOU GET HERE!");
-        }
+		UiScript.MovementSwitch(IsPaused);
+		Controls.enabled = false;
+		Sound.enabled = false;
+		canvas.enabled = true;
     }
 
     public void MainMenuButton()
     {
         Application.LoadLevel(0);
     }
+
+	public void ShowSound()
+	{
+		Controls.enabled = false;
+		canvas.enabled = false;
+		Sound.enabled = true;
+	}
 }

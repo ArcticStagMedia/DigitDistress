@@ -8,7 +8,8 @@ public class ApprovalRatingScript : MonoBehaviour
 {
 	public Image ApprovalRating;
 	public float FillAmount;
-
+	public float FillTotal = 100;
+	public float FillCurrent = 60;
 
 	// Use this for initialization
 	void Start () 
@@ -20,7 +21,7 @@ public class ApprovalRatingScript : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		ApprovalRating.fillAmount = .5f;
+		ApprovalRating.fillAmount = FillCurrent / FillTotal;
 
 	
 	}
