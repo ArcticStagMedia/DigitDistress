@@ -3,40 +3,49 @@ using System.Collections;
 
 public class BUSmovement : MonoBehaviour {
 
-	public Transform[] BusWaypoints;
-	public float BusmoveSpeed;
+	public Transform[] Waypoints;
+	public float moveSpeed;
 	public float BusTime;
-	private int BuscurrentPoint;
+	public float WaypointDistance;
+	private int currentPoint = 0;
+	public Vector3 pos;
 	
 	// Use this for initialization
 	void Start () {
-		transform.position = BusWaypoints [0].position;
-		BuscurrentPoint = 0;
-		BusTime = 0f;
+		transform.position = Waypoints [0].position;
+		//currentPoint = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
 		BusTime += Time.deltaTime;
-		
-		
-		if (transform.position == BusWaypoints [BuscurrentPoint].position) 
+
+		if(BusTime >= 5)
 		{
-			BusTime = 0f;
-			BuscurrentPoint++;
-			transform.LookAt (BusWaypoints [BuscurrentPoint]);
+			transform.position = Vector3.MoveTowards (transform.position, Waypoints [currentPoint].position, moveSpeed * Time.deltaTime);
+			transform.LookAt (Waypoints [currentPoint]);
+		}
+
+		 if(Vector3.Distance(transform.position, Waypoints [currentPoint].position) < WaypointDistance)
+		{
+			currentPoint++;
+			BusTime = 0;
+		}
+
+//		if (transform.position == Waypoints [currentPoint].position) 
+//		{
+//			currentPoint++;
+//			BusTime = 0;
+//			//transform.LookAt (Waypoints [currentPoint]);
+//		}
+		
+		if(currentPoint >= Waypoints.Length) 
+		{
+			currentPoint = 0;
 			//BusTime = 0;
 		}
-		
-		if (BuscurrentPoint >= BusWaypoints.Length) 
-		{
-			BuscurrentPoint = 0;
-		}
-		if(BusTime >= 2)
-		{
-			transform.position = Vector3.MoveTowards (transform.position, BusWaypoints [BuscurrentPoint].position, BusmoveSpeed * Time.deltaTime);
-			//transform.LookAt (Waypoints [currentPoint]);
-		}
+
+		pos = transform.position;
 	}
 }
