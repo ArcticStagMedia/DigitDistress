@@ -9,6 +9,10 @@ public class TeleportPlayer : MonoBehaviour {
 
 	public Vector3 movePlay2 = new Vector3 (0, 0, 0);
 
+	public Vector3 movePlay3 = new Vector3 (0, 0, 0);
+	
+	public Vector3 movePlay4 = new Vector3 (0, 0, 0);
+
 
 	public float roY;
 
@@ -56,10 +60,20 @@ public class TeleportPlayer : MonoBehaviour {
 		
 		playerOBJ.transform.position = movePlay2;
 
-		playerOBJ.transform.rotation = new Quaternion(0,roY,0,0);
+		//playerOBJ.transform.rotation = new Quaternion(0,roY,0,0);
 		
 
 		
+	}
+
+	public void MyClick3()
+	{
+		playerOBJ.transform.position = movePlay3;
+	}
+
+	public void MyClick4()
+	{
+		playerOBJ.transform.position = movePlay4;
 	}
 
 
