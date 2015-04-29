@@ -3,23 +3,24 @@ using System.Collections;
 
 public class CycleScenario : MonoBehaviour {
 	 
-	public float CycleTimer;
-	private int CycleNumber;
+	private float CycleTimer;
+	public int CycleNumber;
 	// Use this for initialization
 	void Start () {
 
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		CycleTimer += Time.deltaTime;
+	void FixedUpdate () {
+		CycleTimer += Time.fixedDeltaTime;
 
-		if (CycleTimer >= 120) 
+		if (CycleTimer >= 120f) 
 		{
 			CycleNumber++;
-			CycleTimer = 0;
+			CycleTimer = 0f;
+			Debug.Log ("Cycle: " + CycleNumber);
 		}
 
-		Debug.Log ("Cycle: " + CycleNumber);
+
 	}
 }
