@@ -20,6 +20,9 @@ ModelImporter:
     4300000: pPipe1
     4300002: pPipe2
     4300004: pCylinder1
+    6400000: pCylinder1
+    6400002: pPipe1
+    6400004: pPipe2
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -42,7 +45,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: .00999999978
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
