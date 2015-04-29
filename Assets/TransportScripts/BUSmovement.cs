@@ -19,7 +19,7 @@ public class BUSmovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		BusTime += Time.fixedDeltaTime;
+		BusTime += Time.deltaTime;
 
 		if(BusTime >= 5)
 		{

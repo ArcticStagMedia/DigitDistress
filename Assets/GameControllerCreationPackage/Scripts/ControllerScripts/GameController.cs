@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 
 public class GameController : MonoBehaviour
 {
@@ -26,8 +25,6 @@ public class GameController : MonoBehaviour
     public int enemyHealth;
     public int enemyMana;
     #endregion
-
-    public List<GameObject> m_lAllowedBuildings;
 
     public float money;
 
@@ -60,10 +57,7 @@ public class GameController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        if (BuildingManager.m_lBuildingPrefabs.Capacity == 0)
-        {
-            BuildingManager.setAllowedBuildings(m_lAllowedBuildings);
-        }
+
     }
 
     // Update is called once per frame
