@@ -53,7 +53,7 @@ public class ClipboardScript : MonoBehaviour
 	{
 		CameraNormal = TheCamera.transform.localRotation;
 
-		if (Input.GetKeyUp(KeyCode.Q) & CanLerp) 
+		if (Input.GetKeyUp(KeyCode.Mouse1) & CanLerp) 
 		{
 			StartTheLerp();
 			clipboard = !clipboard;
