@@ -22,8 +22,9 @@ namespace DigitDistress.AI.ThoughtEngine
 				//public List<DesireBase> m_DesireList { get; private set; }
 				public List<GameObject> m_lBuildings { get; private set; }
 
-				public float m_Entertainment = 100f;
-				public float m_Hunger = 100f;
+				public float m_Entertainment;
+				public float m_Hunger;
+				public float m_Approval;
 
 				public AiState m_CurrentState = AiState.IDLE;
 
@@ -44,6 +45,11 @@ namespace DigitDistress.AI.ThoughtEngine
 						//		m_DesireList = new List<DesireBase> ();
 						//		m_EmotionList = new List<EmotionBase> ();
 						//		m_MemoryList = new List<MemoryBase> ();
+						m_Approval = Random.Range (45f, 55f);
+						m_Entertainment = Random.Range (75f, 90f);
+						m_Hunger = Random.Range (75f, 90f);
+
+						ApprovalSystem.addToDigitList (this);
 
 				}
 				
@@ -54,6 +60,7 @@ namespace DigitDistress.AI.ThoughtEngine
 						//Debug.Log ("Update");
 						Mathf.Clamp (m_Entertainment, 0.0f, 100.0f);
 						Mathf.Clamp (m_Hunger, 0.0f, 100.0f);
+						Mathf.Clamp (m_Approval, 0.0f, 100.0f);
 						switch (m_CurrentState) {
 						case AiState.IDLE:
 								{
@@ -181,7 +188,19 @@ namespace DigitDistress.AI.ThoughtEngine
 								m_Hunger -= Random.Range (0.01f, 0.025f);
 						} else {
 //
-						}				
+						}
+
+						if (m_Hunger > 70 && m_Entertainment > 70) {
+								m_Approval += Random.Range (0.05f, 0.1f);
+						} else if (m_Hunger > 70 || m_Entertainment > 70) {
+								m_Approval += Random.Range (0.01f, 0.03f);
+						}
+
+						if (m_Hunger < 30 && m_Entertainment < 30) {
+								m_Approval -= Random.Range (0.05f, 0.1f);
+						} else if (m_Hunger < 30 || m_Entertainment < 30) {
+								m_Approval -= Random.Range (0.01f, 0.03f);
+						}		
 				}
 
 				public void addBuilding (GameObject obj)

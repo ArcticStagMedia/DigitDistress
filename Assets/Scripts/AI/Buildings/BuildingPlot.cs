@@ -24,13 +24,16 @@ public class BuildingPlot : MonoBehaviour
 				//
 		}
 
-		public void BuildBuilding (string buildingName)
+		public void BuildBuilding (string buildingName, float cost)
 		{
-				if (m_CurrentBuilding == null) {
-						m_CurrentBuilding = (GameObject)(GameObject.Instantiate (BuildingManager.getBuilding (buildingName), this.transform.position, this.transform.rotation));
-				}
-				if (m_CurrentBuilding != null) {
-						PlaceBuildingButton.SetActive (false);
+				if (CheckBuilding (cost)) {
+						if (m_CurrentBuilding == null) {
+								ApprovalSystem.buyWithApproval (cost);
+								m_CurrentBuilding = (GameObject)(GameObject.Instantiate (BuildingManager.getBuilding (buildingName), this.transform.position, this.transform.rotation));
+						}
+						if (m_CurrentBuilding != null) {
+								PlaceBuildingButton.SetActive (false);
+						}
 				}
 		}
 
@@ -53,6 +56,14 @@ public class BuildingPlot : MonoBehaviour
 		{
 				RemoveBuilding ();
 				BuildBuilding (buildingName);
+		}
+
+		public bool CheckBuilding (float cost)
+		{
+				if (ApprovalSystem.checkAvailableApproval (cost)) {
+						return true;
+				}
+				return false;
 		}
 
 }
