@@ -45,9 +45,9 @@ namespace DigitDistress.AI.ThoughtEngine
 						//		m_DesireList = new List<DesireBase> ();
 						//		m_EmotionList = new List<EmotionBase> ();
 						//		m_MemoryList = new List<MemoryBase> ();
-						m_Approval = Random.Range (45f, 55f);
-						m_Entertainment = Random.Range (75f, 90f);
-						m_Hunger = Random.Range (75f, 90f);
+						m_Approval = Random.Range (35f, 60f);
+						m_Entertainment = Random.Range (80f, 90f);
+						m_Hunger = Random.Range (80f, 90f);
 
 						ApprovalSystem.addToDigitList (this);
 
@@ -100,7 +100,7 @@ namespace DigitDistress.AI.ThoughtEngine
 										if (m_vTargetLocation == Vector3.zero || m_NavAg.remainingDistance <= 1.0f) {
 												//m_vTargetLocation = Vector3.zero;
 												
-												m_vTargetLocation = transform.position + Random.insideUnitSphere * 30.0f;
+												m_vTargetLocation = transform.position + Random.insideUnitSphere * 50.0f;
 												m_vTargetLocation.y = transform.position.y;
 												if (setNewDestination (m_vTargetLocation)) {
 														animator.SetBool ("Movement", true);
@@ -185,21 +185,25 @@ namespace DigitDistress.AI.ThoughtEngine
 						}
 
 						if (m_Hunger > 0.0f && m_CurrentState != AiState.EATING) {
-								m_Hunger -= Random.Range (0.01f, 0.025f);
+								m_Hunger -= Random.Range (0.001f, 0.025f);
 						} else {
 //
 						}
 
-						if (m_Hunger > 70 && m_Entertainment > 70) {
-								m_Approval += Random.Range (0.05f, 0.1f);
-						} else if (m_Hunger > 70 || m_Entertainment > 70) {
-								m_Approval += Random.Range (0.01f, 0.03f);
+						if (m_Approval <= 100.0f) {
+								if (m_Hunger > 70 && m_Entertainment > 70) {
+										m_Approval += Random.Range (0.005f, 0.01f);
+								} else if (m_Hunger > 70 || m_Entertainment > 70) {
+										m_Approval += Random.Range (0.001f, 0.003f);
+								}
 						}
 
-						if (m_Hunger < 30 && m_Entertainment < 30) {
-								m_Approval -= Random.Range (0.05f, 0.1f);
-						} else if (m_Hunger < 30 || m_Entertainment < 30) {
-								m_Approval -= Random.Range (0.01f, 0.03f);
+						if (m_Approval >= 0.0f) {
+								if (m_Hunger < 30 && m_Entertainment < 30) {
+										m_Approval -= Random.Range (0.005f, 0.01f);
+								} else if (m_Hunger < 30 || m_Entertainment < 30) {
+										m_Approval -= Random.Range (0.001f, 0.003f);
+								}
 						}		
 				}
 

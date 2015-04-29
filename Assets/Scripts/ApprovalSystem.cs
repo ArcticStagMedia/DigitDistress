@@ -7,9 +7,9 @@ using DigitDistress.AI.ThoughtEngine;
 public static class ApprovalSystem
 {
 
-		static float m_BuyApproval = 50f;
+		static float m_BuyApproval = 100f;
 
-		static List<GameObject> m_lAgents = new List<GameObject> ();
+		static List<AICore> m_lAgents = new List<AICore> ();
 
 		public static void addToDigitList (AICore newObj)
 		{
@@ -31,9 +31,9 @@ public static class ApprovalSystem
 								lowest = core.m_Approval;
 						}
 				}
-				average /= m_lAgents.Count;
+				average = average / m_lAgents.Count;
 				average = (highest + lowest + average) / 3;
-				return average / 2;
+				return (average / 2);
 		}
 
 		public static bool checkAvailableApproval (float need)
@@ -46,7 +46,7 @@ public static class ApprovalSystem
 
 		public static float CalculateAvailableApproval ()
 		{
-				float available = m_BuyApproval + getAverageHappiness () - 50;
+				float available = m_BuyApproval + getAverageHappiness () - 50f;
 				return available;
 		}
 
@@ -54,4 +54,12 @@ public static class ApprovalSystem
 		{
 				m_BuyApproval -= amount;
 		}
+
+		public static void RegenerateApproval (float regen)
+		{
+				if (m_BuyApproval < 100f) {
+						m_BuyApproval += regen;
+				}
+		}
+
 }
