@@ -77,8 +77,8 @@ public class SpeechText : MonoBehaviour
 
             // If Random
 
-            txt.GetComponent<Text>().text = GameObject.Find("GameObject").GetComponentInParent<DialougueScript>().RandomText1;
-            GameObject.Find("GameObject").GetComponentInParent<DialougueScript>().Random();
+            txt.GetComponent<Text>().text = GameObject.Find("Dialogue Manager").GetComponentInParent<DialougueScript>().RandomText1;
+            GameObject.Find("Dialogue Manager").GetComponentInParent<DialougueScript>().Random();
 
 
 

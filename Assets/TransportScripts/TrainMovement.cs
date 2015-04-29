@@ -17,7 +17,7 @@ public class TrainMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		TrainTime += Time.deltaTime;
+		TrainTime += Time.fixedDeltaTime;
 		
 		
 		if (transform.position == Waypoints [currentPoint].position) 
