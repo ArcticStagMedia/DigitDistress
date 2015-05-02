@@ -42,12 +42,13 @@ public class MainMenuTextScript : MonoBehaviour
 
 	public IEnumerator Translation()
 	{
+
 		for (int i = 0; i < BinaryArray.Length; i++) 
 		{
 			yield return new WaitForSeconds (0.001f);
 			if(BinaryArray[i] == char.Parse(" "))
 			{
-
+				print ("testing");
 				BinaryArray[i] = char.Parse(" ");
 			}
 			if(MyArray[i] == char.Parse("\n"))
