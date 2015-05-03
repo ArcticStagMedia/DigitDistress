@@ -116,14 +116,25 @@ public class GameControllerEditor : EditorWindow
         }
 
         isPerpetual = GUILayout.Toggle(isPerpetual, "Perpetual GameController?");
+        isFirstPerson = GUILayout.Toggle(isFirstPerson, "First Person Game?");
+        if (isFirstPerson)
+        {
+            GUILayout.Label("Do you need a controller?");
+            //GUILayout.
+        }
         needMoney = GUILayout.Toggle(needMoney, "Need Money?");
         if (needMoney)
         {
-           EditorGUILayout.FloatField("Starting Funds", money);
+          money = EditorGUILayout.FloatField("Starting Funds", money);
         }
         if (GUILayout.Button("Update GameController"))
         {
             gameController.isPerpetual = this.isPerpetual;
+            if (needMoney)
+            {
+                gameController.money = this.money;
+            }
+
 
         }
     }

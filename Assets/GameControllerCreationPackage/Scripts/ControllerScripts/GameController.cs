@@ -9,7 +9,7 @@ public class GameController : MonoBehaviour
     public bool isFirstPerson;
     public bool isThirdPerson;
     public bool needMoney;
-    public bool needRecources;
+    public bool needRecources = true;
     public bool needAccess;
     public bool needCamera;
     public bool needPlayerHealth;
@@ -28,6 +28,8 @@ public class GameController : MonoBehaviour
     #endregion
 
     public List<GameObject> m_lAllowedBuildings;
+    public List<string> RecourceNames;
+
 
     public float money;
 
@@ -43,9 +45,10 @@ public class GameController : MonoBehaviour
         {
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             this.transform.parent = player.transform;
-        }else if (level == 0)
+        }
+        else if (level == 0)
         {
-            this.transform.parent = null;
+
         }
     }
 
@@ -63,6 +66,16 @@ public class GameController : MonoBehaviour
         if (BuildingManager.m_lBuildingPrefabs.Capacity == 0)
         {
             BuildingManager.setAllowedBuildings(m_lAllowedBuildings);
+        }
+
+        if (Application.loadedLevel == 1)
+        {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            this.transform.parent = player.transform;
+        }
+        else if (Application.loadedLevel == 0)
+        {
+            this.transform.parent = null;
         }
     }
 
