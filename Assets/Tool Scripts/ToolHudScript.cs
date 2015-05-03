@@ -46,10 +46,13 @@ public class ToolHudScript : MonoBehaviour {
 			List<string> Tip = new List<string>();
 			
 			//List
-			Tip.Add("Tip1");
-			Tip.Add("Tip2");
-			Tip.Add("Tip3");
-			Tip.Add("Tip4");
+			Tip.Add("Purchasing food and entertainment building will increase your approval");
+			Tip.Add("Transport will allow digits to navigate the world quicker");
+			Tip.Add("Cycles are like days and will increment by 1 every 2 minutes");
+			Tip.Add("Information will be displayed on your UI tablet");
+			Tip.Add("Jumping on a digits head can be a fun from of transportation");
+			Tip.Add("If you find yourself with nothing to do, ask a digit");
+			Tip.Add("Exploring can be a fun way to discover the world");
 			
 			System.Random random = new System.Random ();
 			string fromList = Tip [random.Next (Tip.Count)];
