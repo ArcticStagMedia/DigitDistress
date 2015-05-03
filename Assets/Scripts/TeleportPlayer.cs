@@ -5,12 +5,16 @@ public class TeleportPlayer : MonoBehaviour {
 
 	private GameObject playerOBJ;
 
-	public Vector3 movePlay1 = new Vector3 (0, 0, 0);
 
-	public Vector3 movePlay2 = new Vector3 (0, 0, 0);
+    public GameObject boulSign;
 
+    public GameObject circleSign;
 
-	public float roY;
+    public GameObject hospitalSign;
+
+    public GameObject endSign;
+
+	
 
 
 	// Use this for initialization
@@ -32,35 +36,36 @@ public class TeleportPlayer : MonoBehaviour {
 	public void MyClick1()
 	{
 
-		playerOBJ.transform.position = movePlay1;
+        playerOBJ.transform.position = boulSign.transform.position;
 
 
-
-//		if(i == 1)
-//		{
-//			print ("FALSE");
-//
-//			clicked = false;
-//
-//			playerOBJ.transform.position = movePlay2;
-//			if (clicked == false)
-//			{
-//				i = 0;
-//          }
-
-
-		}
+	}
 
 	public void MyClick2()
 	{
-		
-		playerOBJ.transform.position = movePlay2;
 
-		playerOBJ.transform.rotation = new Quaternion(0,roY,0,0);
-		
+        playerOBJ.transform.position = circleSign.transform.position;
 
 		
 	}
+
+    public void MyClick3()
+    {
+
+        playerOBJ.transform.position = hospitalSign.transform.position;
+
+
+    }
+
+
+    public void MyClick4()
+    {
+
+
+        playerOBJ.transform.position = endSign.transform.position;
+
+    }
+
 
 
 
