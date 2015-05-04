@@ -10,6 +10,7 @@ public class ToolHudScript : MonoBehaviour {
 	public Text txt1;
 	public Text txt2;
 	public Text txt3;
+	public Text txt4;
 
 	public Text TipText;
 
@@ -36,6 +37,7 @@ public class ToolHudScript : MonoBehaviour {
 		txt1.GetComponent<Text> ().text = "Digit Count: " + T_S.countAI;
 		txt2.GetComponent<Text> ().text = "Building & Plot Count: " + T_S.countBuildingsAndPlots;
 		txt3.GetComponent<Text> ().text = "Digit Used Transport Count: " + T_S.countDigitsUsedTransport;
+		txt4.GetComponent<Text> ().text = "On Transport: " + T_S.DigitInside;
 
 
 

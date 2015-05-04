@@ -3,6 +3,7 @@ using System.Collections;
 
 public class BusStopTrigger : MonoBehaviour
 {
+	public ToolScript T_S;
     public BoardBus BB;
 	//public BUSmovement B_Move;
 
@@ -40,6 +41,7 @@ public class BusStopTrigger : MonoBehaviour
             other.gameObject.transform.position = BusStop.position;
             other.gameObject.renderer.enabled = (true);
 
+			T_S.DigitInside = true;
             //if (BB.CountAI <= 6) {	
 
 
