@@ -5,6 +5,8 @@ public class ToolScript : MonoBehaviour {
 
 	private GameObject[] getCount;
 	private GameObject[] getCountB;
+
+	public bool DigitInside = false;
 	
 	public int countAI;
 	public int countBuildingsAndPlots;
