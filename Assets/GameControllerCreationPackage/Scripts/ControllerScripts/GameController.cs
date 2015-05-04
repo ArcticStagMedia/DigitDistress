@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GameController : MonoBehaviour
 {
@@ -26,13 +27,10 @@ public class GameController : MonoBehaviour
     public int enemyMana;
     #endregion
 
-<<<<<<< HEAD
     public List<GameObject> m_lAllowedBuildings;
     public List<string> RecourceNames;
 
 
-=======
->>>>>>> 336e988e8db6252dc166f02ec2aecb4fb4939293
     public float money;
 
     public AudioListener gameAudio;
@@ -65,7 +63,6 @@ public class GameController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-<<<<<<< HEAD
         if (BuildingManager.m_lBuildingPrefabs.Capacity == 0)
         {
             BuildingManager.setAllowedBuildings(m_lAllowedBuildings);
@@ -80,9 +77,6 @@ public class GameController : MonoBehaviour
         {
             this.transform.parent = null;
         }
-=======
-
->>>>>>> 336e988e8db6252dc166f02ec2aecb4fb4939293
     }
 
     // Update is called once per frame
