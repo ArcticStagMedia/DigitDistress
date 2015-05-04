@@ -6,6 +6,35 @@ public class GameControllerEditor : EditorWindow
 {
 
 
+    #region GameController boolDeclarations
+    public bool isPerpetual = false;
+    public bool isFirstPerson;
+    public bool isThirdPerson;
+    public bool needMoney;
+    public bool needRecources;
+    public bool needAccess;
+    public bool needCamera;
+    public bool needPlayerHealth;
+    public bool needPlayerMana;
+    public bool needEnemies;
+    public bool needEnemyHealth;
+    public bool needEnemyMana;
+    #endregion
+
+    #region GameController IntDeclarations
+    public int amountOfDiffrentRecources = 0;
+    public int playerHealth = 0;
+    public int playerMana = 0;
+    public int enemyHealth = 0;
+    public int enemyMana = 0;
+    #endregion
+
+    public float money = 0;
+
+    public AudioListener gameAudio;
+    public AudioSource gameMusic;
+    public AudioSource soundEffects;
+
 
     GameObject gameControllerObject;
     GameController gameController;
@@ -13,7 +42,6 @@ public class GameControllerEditor : EditorWindow
 
 
 
-    public bool isPerpetual = false;
     bool gameControllerPlacedInScene = false;
 
     // Use this for initialization
@@ -31,6 +59,15 @@ public class GameControllerEditor : EditorWindow
 
     void Update()
     {
+        if (!GameObject.FindGameObjectWithTag("GameController"))
+        {
+            gameControllerObject = Resources.Load<GameObject>("GameController");
+        }
+        else if (GameObject.FindGameObjectWithTag("GameController"))
+        {
+            gameControllerPlacedInScene = true;
+        }
+
         if (gameControllerPlacedInScene)
         {
             gameControllerObject = GameObject.FindGameObjectWithTag("GameController");
@@ -75,11 +112,10 @@ public class GameControllerEditor : EditorWindow
             {
                 Debug.LogError("Something went wrong with tag \"GameController\"");
             }
-            
+
         }
 
         isPerpetual = GUILayout.Toggle(isPerpetual, "Perpetual GameController?");
-<<<<<<< HEAD:Assets/GameControllerCreationPackage/Scripts/Editor/EditorScripts/GameControllerEditor.cs
         isFirstPerson = GUILayout.Toggle(isFirstPerson, "First Person Game?");
         if (isFirstPerson)
         {
@@ -100,11 +136,6 @@ public class GameControllerEditor : EditorWindow
             }
 
 
-=======
-        if (GUILayout.Button("Update GameController"))
-        {
-            gameController.isPerpetual = this.isPerpetual;
->>>>>>> 336e988e8db6252dc166f02ec2aecb4fb4939293:Assets/GameControllerCreationPackage/Scripts/EditorScripts/GameControllerEditor.cs
         }
     }
 }
