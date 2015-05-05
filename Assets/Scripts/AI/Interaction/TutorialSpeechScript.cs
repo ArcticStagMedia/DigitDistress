@@ -32,14 +32,17 @@ public class TutorialSpeechScript : MonoBehaviour {
 
 		TheSpeechCanvas.GetComponent<Canvas>().enabled = true;
 		m_Player = GameObject.FindGameObjectWithTag("Player");
+
+        AS.clip = dia1;
+        AS.Play();
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		SpeechBoxTime += Time.deltaTime;
 
-        AS.clip = dia1;
-        AS.Play();
+       
 
 		if (SpeechBoxTime <= 10) 
 		{
