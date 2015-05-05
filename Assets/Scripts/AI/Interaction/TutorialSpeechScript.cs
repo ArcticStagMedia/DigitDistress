@@ -12,13 +12,24 @@ public class TutorialSpeechScript : MonoBehaviour {
 	public float SpeechBoxTime;
 	GameObject m_Player;
 
-	string DigitGreetings =  "Press Q to bring up your UI tablet";
-	string DigitGreetings1 =  "WASD to move around and the mouse to look";
-	string DigitGreetings2 =  "Go to the purple spanners to build";
+	public string DigitGreetings;
+    public string DigitGreetings1;
+
+
+	string DigitGreetings2 =  "Press Q to open nano- clip";
 	string DigitGreetings3 =  "To keep digits happy build them entertainment and food buildings";
 
+    public AudioClip dia1;
+
+    public AudioClip dia2;
+
+    private AudioSource AS;
+
 	// Use this for initialization
-	void Start () {
+	void Start () 
+    {
+        AS = GetComponent<AudioSource>();
+
 		TheSpeechCanvas.GetComponent<Canvas>().enabled = true;
 		m_Player = GameObject.FindGameObjectWithTag("Player");
 	}
@@ -27,19 +38,26 @@ public class TutorialSpeechScript : MonoBehaviour {
 	void Update () {
 		SpeechBoxTime += Time.deltaTime;
 
+        AS.clip = dia1;
+        AS.Play();
+
 		if (SpeechBoxTime <= 10) 
 		{
 			txt.GetComponent<Text> ().text = "" + DigitGreetings;
+            //AS.clip = dia1;
+            //AS.Play();
 			//string quote = DigitGreetings;
 		}
 		if (SpeechBoxTime >= 11) 
 		{
-			txt.GetComponent<Text> ().text = "" + DigitGreetings1;
+			txt.GetComponent<Text> ().text = "" + DigitGreetings2;
 			//string quote = DigitGreetings1;
 		}
-		if (SpeechBoxTime >= 16) 
+		if (SpeechBoxTime >= 14) 
 		{
-			txt.GetComponent<Text> ().text = "" + DigitGreetings2;
+			txt.GetComponent<Text> ().text = "" + DigitGreetings1;
+            AS.clip = dia2;
+            AS.Play();
 			//string quote = DigitGreetings2;
 		}
 		if (SpeechBoxTime >= 21) 
