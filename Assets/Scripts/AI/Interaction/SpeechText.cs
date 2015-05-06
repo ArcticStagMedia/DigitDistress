@@ -24,11 +24,7 @@ public class SpeechText : MonoBehaviour
 
         SpeechBoxTime += Time.deltaTime;
 
-        string[] DigitGreetings = { "Hello Mayor", "Fancy seeing you here", "Lovely Day", "WOW is it really you?" };
-
-        System.Random random = new System.Random();
-
-        string quote = DigitGreetings[random.Next(DigitGreetings.Length)];
+       
 
         if (m_Player != null)
         {
@@ -40,7 +36,13 @@ public class SpeechText : MonoBehaviour
         {
             SpeechBoxTime = 0;
 
-            //txt.GetComponent<Text> ().text = quote;
+            string[] DigitGreetings = { "Hello Mayor", "Fancy seeing you here", "Lovely Day", "WOW is it really you?" };
+
+            System.Random random = new System.Random();
+
+            string quote = DigitGreetings[random.Next(DigitGreetings.Length)];
+
+            txt.GetComponent<Text> ().text = quote;
 
 
             // if Happy
@@ -77,8 +79,8 @@ public class SpeechText : MonoBehaviour
 
             // If Random
 
-            txt.GetComponent<Text>().text = GameObject.Find("GameObject").GetComponentInParent<DialougueScript>().RandomText1;
-            GameObject.Find("GameObject").GetComponentInParent<DialougueScript>().Random();
+            //txt.GetComponent<Text>().text = GameObject.Find("GameObject").GetComponentInParent<DialougueScript>().RandomText1;
+           // GameObject.Find("GameObject").GetComponentInParent<DialougueScript>().Random();
 
 
 

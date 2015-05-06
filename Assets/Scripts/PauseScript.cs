@@ -90,6 +90,11 @@ public class PauseScript : MonoBehaviour
         Application.LoadLevel(0);
     }
 
+    public void QuitGameNow()
+    {
+        Application.Quit();
+    }
+
 	public void ShowSound()
 	{
 		Controls.enabled = false;

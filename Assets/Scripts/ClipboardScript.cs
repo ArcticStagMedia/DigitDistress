@@ -31,11 +31,13 @@ public class ClipboardScript : MonoBehaviour
 		private MouseLook mL;
 		private MouseLook mL2;
 		private CharacterMotor cM;
+        private UIScript uiScript;
 
 
 		// Use this for initialization
 		void Start ()
 		{
+                uiScript = GameObject.FindGameObjectWithTag("PauseManager").GetComponent<UIScript>();
 				Screen.lockCursor = true;
 				mL = playerbody.GetComponent<MouseLook> ();
 				mL2 = TheCamera.GetComponentInChildren<MouseLook> ();
@@ -57,7 +59,7 @@ public class ClipboardScript : MonoBehaviour
 						StartTheLerp ();
 						clipboard = !clipboard;
 						CanLerp = false;
-						Screen.lockCursor = !Screen.lockCursor;
+                        uiScript.MovementSwitch(clipboard);
 				}
 
 		}
@@ -66,9 +68,9 @@ public class ClipboardScript : MonoBehaviour
 		{
 				WeLerping = true;
 				TimeLerpingBegan = Time.time;
-				if (!clipboard) {
-						lockPlayerPosition ();
-				}
+                //if (!clipboard) {
+                //        lockPlayerPosition ();
+                //}
 
 
 
@@ -81,13 +83,13 @@ public class ClipboardScript : MonoBehaviour
 		
 		}
 
-		void lockPlayerPosition ()
-		{
-				lockMovement = !lockMovement;
-				mL.enabled = lockMovement;
-				mL2.enabled = lockMovement;
-				cM.enabled = lockMovement;
-		}
+        //void lockPlayerPosition ()
+        //{
+        //        lockMovement = !lockMovement;
+        //        mL.enabled = lockMovement;
+        //        mL2.enabled = lockMovement;
+        //        cM.enabled = lockMovement;
+        //}
 
 		void FixedUpdate ()
 		{
@@ -126,7 +128,7 @@ public class ClipboardScript : MonoBehaviour
 								if (PercentageComplete >= 0.99f) {
 										WeLerping = false;
 										CanLerp = true;
-										lockPlayerPosition ();
+										//lockPlayerPosition ();
 										//clipboard = true;
 								}
 						}
