@@ -5,12 +5,14 @@ using UnityEngine.UI;
 
 public class ToolHudScript : MonoBehaviour {
 	public ToolScript T_S;
+	public CycleScenario C_S;
 
 	public GameObject ToolCanvas;
 	public Text txt1;
 	public Text txt2;
 	public Text txt3;
 	public Text txt4;
+	public Text txt5;
 
 	public Text TipText;
 
@@ -38,6 +40,7 @@ public class ToolHudScript : MonoBehaviour {
 		txt2.GetComponent<Text> ().text = "Building & Plot Count: " + T_S.countBuildingsAndPlots;
 		txt3.GetComponent<Text> ().text = "Digit Used Transport Count: " + T_S.countDigitsUsedTransport;
 		txt4.GetComponent<Text> ().text = "On Transport: " + T_S.DigitInside;
+		txt5.GetComponent<Text> ().text = "Approval: " + C_S.FillAmount * 100;
 
 
 
