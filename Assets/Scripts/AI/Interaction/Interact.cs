@@ -25,7 +25,7 @@ public class Interact : MonoBehaviour
 				selected = true;
 				//renderer.material.color = Color.red;
 
-				if (selected == true && Input.GetKey (KeyCode.E)) {
+				if (selected == true && Input.GetKeyDown (KeyCode.E)) {
 						IsSpeaking = true;
 				} else {
 						IsSpeaking = false;

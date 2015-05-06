@@ -7,6 +7,10 @@ public class TrainMovement : MonoBehaviour {
 	public float moveSpeed;
 	public float TrainTime;
 	private int currentPoint;
+
+    public float WaypointDistance;
+
+    //public Vector3 pos;
 	
 	// Use this for initialization
 	void Start () {
@@ -18,9 +22,9 @@ public class TrainMovement : MonoBehaviour {
 	void Update () 
 	{
 		TrainTime += Time.deltaTime;
-		
-		
-		if (transform.position == Waypoints [currentPoint].position) 
+
+
+        if (Vector3.Distance(transform.position, Waypoints[currentPoint].position) < WaypointDistance) 
 		{
 			TrainTime = 0;
 			currentPoint++;
@@ -30,10 +34,10 @@ public class TrainMovement : MonoBehaviour {
 		{
 			currentPoint = 0;
 		}
-		if(TrainTime >= 2)
+		if(TrainTime >= 1)
 		{
 			transform.position = Vector3.MoveTowards (transform.position, Waypoints [currentPoint].position, moveSpeed * Time.deltaTime);
-			//transform.LookAt (Waypoints [currentPoint]);
+			transform.LookAt (Waypoints [currentPoint]);
 		}
 	}
 }
