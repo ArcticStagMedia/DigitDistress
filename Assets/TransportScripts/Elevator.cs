@@ -7,6 +7,8 @@ public class Elevator : MonoBehaviour {
 	public float moveSpeed;
 	public float EleTime;
 	private int currentPoint;
+
+    public float WaypointDistance;
 	
 	// Use this for initialization
 	void Start () {
@@ -18,9 +20,9 @@ public class Elevator : MonoBehaviour {
 	void Update () 
 	{
 		EleTime += Time.deltaTime;
-		
-		
-		if (transform.position == Waypoints [currentPoint].position) 
+
+
+        if (Vector3.Distance(transform.position, Waypoints[currentPoint].position) < WaypointDistance) 
 		{
 			EleTime = 0;
 			currentPoint++;
