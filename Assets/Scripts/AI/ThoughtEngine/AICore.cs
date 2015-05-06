@@ -45,7 +45,8 @@ namespace DigitDistress.AI.ThoughtEngine
 						animator = GetComponent<Animator> ();
 
 			m_Happiness = Random.Range (20.0f, 40.0f);
-			GameObject.Find ("_MayorOfDigitVill").GetComponentInChildren<CycleScenario> ().addDigit (this.transform);
+			Debug.Log ("<color=cyan> " + base.gameObject.transform + "</color>");
+			GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<CycleScenario> ().addDigit (this.gameObject);
 						//		m_DesireList = new List<DesireBase> ();
 						//		m_EmotionList = new List<EmotionBase> ();
 						//		m_MemoryList = new List<MemoryBase> ();

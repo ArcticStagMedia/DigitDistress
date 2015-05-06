@@ -19,7 +19,7 @@ public class CycleScenario : MonoBehaviour {
 	private List<Transform> m_lDigits;
 
 	// Use this for initialization
-	void Start () 
+	void Awake () 
 	{
 		CyclePercent = GetComponent<Image> ();
 		m_lDigits = new List<Transform> ();
@@ -62,9 +62,9 @@ public class CycleScenario : MonoBehaviour {
 
 	}
 
-	public void addDigit(Transform newDig)
+	public void addDigit(GameObject newDig)
 	{
-		m_lDigits.Add (newDig);
+		m_lDigits.Add (newDig.transform);
 		}
 	
 }
