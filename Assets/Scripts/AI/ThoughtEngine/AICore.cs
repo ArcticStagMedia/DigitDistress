@@ -13,7 +13,8 @@ namespace DigitDistress.AI.ThoughtEngine
 				TRAVELLINGTOFOOD,
 				TRAVELLINGTOENTER,
 				EATING,
-				PLAYING
+				PLAYING,
+		BOTH
 		}
 		public class AICore : MonoBehaviour
 		{
@@ -24,6 +25,7 @@ namespace DigitDistress.AI.ThoughtEngine
 
 				public float m_Entertainment = 100f;
 				public float m_Hunger = 100f;
+		public float m_Happiness = 100f;
 
 				public AiState m_CurrentState = AiState.IDLE;
 
@@ -41,6 +43,9 @@ namespace DigitDistress.AI.ThoughtEngine
 						NavMeshHit irrelevent = new NavMeshHit ();
 						m_vTargetLocation = Vector3.zero;
 						animator = GetComponent<Animator> ();
+
+			m_Happiness = Random.Range (20.0f, 40.0f);
+			GameObject.Find ("_MayorOfDigitVill").GetComponentInChildren<CycleScenario> ().addDigit (this.transform);
 						//		m_DesireList = new List<DesireBase> ();
 						//		m_EmotionList = new List<EmotionBase> ();
 						//		m_MemoryList = new List<MemoryBase> ();
@@ -52,8 +57,10 @@ namespace DigitDistress.AI.ThoughtEngine
 				{
 
 						//Debug.Log ("Update");
-						Mathf.Clamp (m_Entertainment, 0.0f, 100.0f);
-						Mathf.Clamp (m_Hunger, 0.0f, 100.0f);
+						m_Entertainment = Mathf.Clamp (m_Entertainment, 0.0f, 100.0f);
+						m_Hunger =  Mathf.Clamp (m_Hunger, 0.0f, 100.0f);
+						m_Happiness = Mathf.Clamp (m_Happiness, -50.0f, 50.0f);
+
 						switch (m_CurrentState) {
 						case AiState.IDLE:
 								{
@@ -113,7 +120,7 @@ namespace DigitDistress.AI.ThoughtEngine
 										//break;
 										//}
 										if (m_Entertainment < 20.0f) {
-												if (!m_lBuildings.Find (x => x.GetComponent<BuildingScript> ().m_AssociatedEmotion == "Fun")) {
+												if (!m_lBuildings.Find (x => x.GetComponent<BuildingScript> ().m_AssociatedEmotion.Contains("Fun"))) {
 														
 												} else {
 														m_NavAg.SetDestination (getClosestBuilding ("Fun"));
@@ -123,7 +130,7 @@ namespace DigitDistress.AI.ThoughtEngine
 												}
 										}
 										if (m_Hunger < 20.0f) {
-												if (!m_lBuildings.Find (x => x.GetComponent<BuildingScript> ().m_AssociatedEmotion == "Hunger")) {
+												if (!m_lBuildings.Find (x => x.GetComponent<BuildingScript> ().m_AssociatedEmotion.Contains ("Hunger"))) {
 														
 												} else {
 														m_NavAg.SetDestination (getClosestBuilding ("Hunger"));
@@ -164,6 +171,17 @@ namespace DigitDistress.AI.ThoughtEngine
 										}
 										break;
 								}
+			case AiState.BOTH:
+			{
+				animator.SetBool ("Movement", false);
+				m_Entertainment += Random.Range (0.2f, 0.5f);
+				m_Hunger += Random.Range (0.2f, 0.5f);
+				if (m_Entertainment > 80.0f && m_Hunger > 80.0f) {
+					m_CurrentState = AiState.IDLE;
+				}
+				break;
+			}
+
 						default:
 								{
 //
@@ -171,17 +189,30 @@ namespace DigitDistress.AI.ThoughtEngine
 								}
 						}
 //While Not Recharging
-						if (m_Entertainment > 0.0f && m_CurrentState != AiState.PLAYING) {
+			if (m_Entertainment > 0.0f && (m_CurrentState != AiState.PLAYING || m_CurrentState != AiState.BOTH)) {
 								m_Entertainment -= Random.Range (0.01f, 0.025f);
 						} else {
 
 						}
 
-						if (m_Hunger > 0.0f && m_CurrentState != AiState.EATING) {
+			if (m_Hunger > 0.0f && (m_CurrentState != AiState.EATING || m_CurrentState != AiState.BOTH) ) {
 								m_Hunger -= Random.Range (0.01f, 0.025f);
 						} else {
 //
-						}				
+						}
+			if (m_Hunger < 30.0f && m_Entertainment < 30.0f) {
+				m_Happiness -= 0.03f;
+						}
+			else if (m_Hunger < 30.0f || m_Entertainment < 30.0f) {
+				m_Happiness -= 0.01f;
+			}
+
+			if (m_Hunger > 70.0f && m_Entertainment < 70.0f) {
+				m_Happiness += 0.03f;
+			}
+			else if (m_Hunger < 30.0f || m_Entertainment < 30.0f) {
+				m_Happiness += 0.01f;
+			}
 				}
 
 				public void addBuilding (GameObject obj)
@@ -195,7 +226,7 @@ namespace DigitDistress.AI.ThoughtEngine
 						if (m_lBuildings.Count <= 0) {
 								return Vector3.zero;
 						}
-						foreach (GameObject obj in m_lBuildings.FindAll (x => x.GetComponent<BuildingScript> ().m_AssociatedEmotion == bType)) {
+						foreach (GameObject obj in m_lBuildings.FindAll (x => x.GetComponent<BuildingScript> ().m_AssociatedEmotion.Contains(bType))) {
 								if (vect == Vector3.zero) {
 										vect = obj.transform.position;
 								} else if (Vector3.Distance (vect, transform.position) > Vector3.Distance (obj.transform.position, transform.position)) {
@@ -212,11 +243,11 @@ namespace DigitDistress.AI.ThoughtEngine
 
 						if (NavMesh.SamplePosition (dest, out irrelevent, 1.0f, 1 << NavMesh.GetNavMeshLayerFromName ("Default"))) {
 								m_NavAg.SetDestination (irrelevent.position);
-								Debug.Log ("Path On path");
+								//Debug.Log ("Path On path");
 								return true;
 						} else if (NavMesh.SamplePosition (dest, out irrelevent, 1.0f, 1 << NavMesh.GetNavMeshLayerFromName ("Jump"))) {
 								m_NavAg.SetDestination (irrelevent.position);
-								Debug.Log ("Path On road");
+								//Debug.Log ("Path On road");
 								return true;
 						} else {
 								return false;
@@ -237,6 +268,11 @@ namespace DigitDistress.AI.ThoughtEngine
 										m_CurrentState = AiState.EATING;
 										break;
 								}
+			case "Both":
+			{
+				m_CurrentState = AiState.BOTH;
+				break;
+			}
 						default:
 //
 								break;

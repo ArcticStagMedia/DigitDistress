@@ -9,6 +9,7 @@ public class BuildingUIManager : MonoBehaviour
 
 		public List<Transform> m_lUIChildren { get; private set; }
 		public Transform m_tActive { get; private set; }
+	public Transform m_Player;
 
 		// Use this for initialization
 		void Start ()
@@ -23,6 +24,7 @@ public class BuildingUIManager : MonoBehaviour
 				//m_lUIChildren.Remove (this.transform);
 
 				m_tActive = m_lUIChildren.Find (x => x.gameObject.name.Contains ("Main"));
+		m_Player = GameObject.FindGameObjectWithTag ("Player").transform;
 		}
 	
 		// Update is called once per frame
@@ -42,5 +44,6 @@ public class BuildingUIManager : MonoBehaviour
 		public void ClosePanels ()
 		{
 				m_lUIChildren.ForEach (y => y.gameObject.SetActive (false));
+		m_Player.gameObject.GetComponentInChildren<UIScript> ().MovementSwitch (false);
 		}
 }

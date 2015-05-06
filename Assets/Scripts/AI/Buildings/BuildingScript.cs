@@ -6,11 +6,12 @@ using DigitDistress.AI.ThoughtEngine;
 public class BuildingScript : MonoBehaviour
 {
 		public string m_AssociatedEmotion;
+	public float m_Cost;
 
 		// Use this for initialization
 		void Start ()
 		{
-
+		GameObject.FindGameObjectWithTag ("Player").GetComponentInChildren<ApprovalRatingScript> ().AddRating (m_Cost);
 		}
 	
 		// Update is called once per frame

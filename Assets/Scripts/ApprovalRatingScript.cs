@@ -7,36 +7,38 @@ using System;
 public class ApprovalRatingScript : MonoBehaviour 
 {
 	public Image ApprovalRating;
-	public float FillAmount;
-	public float FillTotal = 100f;
-	public float FillCurrent = 20f;
+	public Text ApprovalNumber;
+	private float FillAmount;
+	private float FillTotal = 100f;
+	public float FillCurrent = 50f;
 
 	// Use this for initialization
 	void Start () 
 	{
 		ApprovalRating = GetComponent<Image> ();
-	
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		if(FillCurrent < 0f)
-		{
-			FillCurrent = 0f;
-		}
-		if(FillCurrent > 100f)
-		{
-			FillCurrent = 100f;
-		}
+
+		FillCurrent = Mathf.Clamp (FillCurrent, 0.0f, 100.0f);
 		FillAmount = (FillCurrent / FillTotal );
 		ApprovalRating.fillAmount = FillAmount;
+		ApprovalNumber.text = ((int)FillCurrent).ToString ();
 
-	
 	}
 
-	public void ChangeRatingCurrent (float Amount)
+	public void AddRating (float Amount)
 	{
-		FillCurrent = Amount;
+		FillCurrent += Amount;
+	}
+
+	public bool CheckRating(float amount)
+	{
+		if (amount > FillCurrent) {
+			return false;
+				}
+		return true;
 	}
 }
