@@ -66,5 +66,10 @@ public class CycleScenario : MonoBehaviour {
 	{
 		m_lDigits.Add (newDig.transform);
 		}
+
+    public int setCycles()
+    {
+        return CycleNumber;
+    }
 	
 }

@@ -16,6 +16,7 @@ public class MainMenuTextScript : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
+        Screen.lockCursor = false;
 		MyText = TheTextObject.gameObject.GetComponent<Text> ();
 		MyTextString = MyText.text;
 		MyArray = MyTextString.ToCharArray ();
